@@ -65,6 +65,34 @@ func main() {
 
 Together AI takes a bearer API key, created in the API keys section of your account settings. The client sends no credentials by itself; add the `Authorization` header with a `RequestEditorFn` as above, either for every request through `WithRequestEditorFn` or for one call by passing it as the last argument of that method.
 
+## Agent integrations
+
+The [skill](.agents/skills/go-togetherai) teaches a coding agent how to use go-togetherai when it writes Go. It works in any agent that reads `.agents/skills/`, and installs natively in the clients below.
+
+### Claude Code
+
+```bash
+claude plugin marketplace add psyb0t/agents
+claude plugin install go-togetherai@psyb0t
+```
+
+### Codex
+
+```bash
+codex plugin marketplace add psyb0t/agents
+codex plugin add go-togetherai@psyb0t
+```
+
+Codex also picks the skill up with no install in any checkout of this repo.
+
+### OpenClaw
+
+The skill is published to ClawHub on every release:
+
+```bash
+openclaw skills install @psyb0t/go-togetherai
+```
+
 ## Regenerating
 
 Together AI's spec is not committed. `make generate` downloads the current OpenAPI document into the gitignored `api/` directory and regenerates the client:

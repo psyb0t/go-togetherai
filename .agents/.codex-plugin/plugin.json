@@ -1,0 +1,11 @@
+{
+  "name": "go-togetherai",
+  "version": "0.1.1",
+  "description": "Unofficial Go client for the Together AI REST API, generated with oapi-codegen, with one typed method per endpoint.",
+  "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
+  "homepage": "https://github.com/psyb0t/go-togetherai",
+  "repository": "https://github.com/psyb0t/go-togetherai",
+  "license": "MIT",
+  "keywords": ["together-ai", "llm", "inference", "api-client", "openapi", "go-library"],
+  "skills": "./skills/"
+}
