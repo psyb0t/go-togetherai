@@ -107,6 +107,8 @@ make generate
 - `go tool patchspec` (`internal/cmd/patchspec`) writes `api/openapi.patched.yaml` with two fixes oapi-codegen needs. It drops discriminators that have no `mapping`, since their oneOf members are inline and oapi-codegen can't map them. It also drops the inline enum from array items inside a oneOf or anyOf, which oapi-codegen otherwise names the same as the array type. Those unions still decode through their `As*` and `From*` methods.
 - oapi-codegen generates `client.gen.go` from the patched spec with `config.yaml`.
 
+`.github/workflows/regen.yml` does the same every day in CI. When the new spec changes the client, it runs `make lint`, `make test` and `make sec`. If a check fails, Claude edits the code and the checks run again, up to three times, and a review step reads the result. A passing change is committed with a CHANGELOG entry and tagged as the next release: a patch version for fixes and additions, a minor version for breaking changes.
+
 ## Development
 
 Every command runs in the `Dockerfile.dev` image. The host needs only Docker and Make.
