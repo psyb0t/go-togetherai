@@ -31,6 +31,8 @@ Together AI takes `Authorization: Bearer <api key>`. The client sends no credent
 
 Base URL: `https://api.together.ai/v1`.
 
+Some operations declare their own server in the spec, `https://api.together.ai/v2`: the paths under `/organizations`, `/public`, `/supported-models` and `/videos`, and some under `/projects`. The generated client ignores per-operation servers and always uses the base URL given to the constructor, so call those operations through a second client created with `https://api.together.ai/v2`.
+
 ## Calling operations
 
 Each operation `X` in the spec has:
@@ -38,7 +40,7 @@ Each operation `X` in the spec has:
 - `client.XWithResponse(ctx, pathParams..., params, ...)` returning a response struct.
 - For operations with a JSON body, `client.XWithResponse(ctx, body)` takes the typed `XJSONRequestBody`, and `client.XWithBodyWithResponse(ctx, contentType, io.Reader)` takes raw bytes.
 
-Some operations, by name in `client.gen.go`:
+Some operations:
 
 | Method | Request |
 |---|---|
@@ -47,7 +49,7 @@ Some operations, by name in `client.gen.go`:
 | `CompletionsWithResponse(ctx, CompletionsJSONRequestBody)` | Text completion. |
 | `EmbeddingsWithResponse(ctx, EmbeddingsJSONRequestBody)` | Embeddings. Returns `*EmbeddingsResponse2`. |
 
-Search `client.gen.go` for `WithResponse(` to find the rest. Do not guess a method name.
+Look up the rest with `go doc`, as the skill's "Finding endpoints and types" section shows. Do not guess a method name.
 
 ## Union types
 
@@ -59,7 +61,7 @@ Every response struct has:
 
 - `Body []byte` and `HTTPResponse *http.Response`.
 - `StatusCode()` and `Status()`.
-- One `JSONnnn` field per documented status, set only when the response had that status. Error statuses (`JSON400`, `JSON401`, `JSON404`, `JSON429`, `JSON503` and so on) are `*ErrorData`, with `Error.Message`, `Error.Type` and optional `Error.Code` and `Error.Param`.
+- One `JSONnnn` field per documented status, set only when the response had that status. Error statuses (`JSON400`, `JSON401`, `JSON404`, `JSON429`, `JSON503` and so on) are mostly `*ErrorData`, with `Error.Message`, `Error.Type` and optional `Error.Code` and `Error.Param`. Some operations declare other error types, such as `*BatchErrorResponse` or `*QueueError`; check the field's type.
 
 A method returns a non-nil error only for transport failures and bodies that do not decode.
 

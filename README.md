@@ -61,6 +61,8 @@ func main() {
 
 `example_test.go` runs the same code against a local test server, so the example keeps compiling as the spec changes.
 
+The full API, with the spec's descriptions as doc comments, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-togetherai) and in `go doc github.com/psyb0t/go-togetherai` from inside your module.
+
 ## Auth
 
 Together AI takes a bearer API key, created in the API keys section of your account settings. The client sends no credentials by itself; add the `Authorization` header with a `RequestEditorFn` as above, either for every request through `WithRequestEditorFn` or for one call by passing it as the last argument of that method.
