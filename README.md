@@ -10,7 +10,7 @@ Unofficial Go client for [Together AI](https://docs.together.ai), generated from
 
 | Package | API | Generator |
 |---|---|---|
-| `together` | REST, `https://api.together.ai/v1` | [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) |
+| `together` | REST, `https://api.together.ai` | [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) |
 
 `client.gen.go` is generated. Don't edit it by hand, regenerate it.
 
@@ -43,17 +43,18 @@ func main() {
 		return nil
 	})
 
-	client, err := together.NewClientWithResponses("https://api.together.ai/v1", auth)
+	client, err := together.NewClientWithResponses("https://api.together.ai", auth)
 	if err != nil {
 		panic(err)
 	}
 
-	res, err := client.ModelsWithResponse(context.Background(), nil)
+	res, err := client.SupportedModelsServiceListSupportedModelsWithResponse(
+		context.Background(), nil)
 	if err != nil {
 		panic(err)
 	}
 
-	for _, model := range *res.JSON200 {
+	for _, model := range res.JSON200.Data {
 		fmt.Println(model.Id)
 	}
 }

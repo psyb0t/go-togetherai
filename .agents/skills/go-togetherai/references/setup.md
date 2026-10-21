@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Go 1.26.9 or newer, per the module's `go.mod`.
+- Go 1.26.10 or newer, per the module's `go.mod`.
 - A Together AI API key, created in the API keys section of the account settings.
 
 ## Install
@@ -29,9 +29,7 @@ Together AI takes `Authorization: Bearer <api key>`. The client sends no credent
 | `together.WithHTTPClient(doer)` | Replaces `http.DefaultClient`, for timeouts or transport settings. |
 | `together.WithBaseURL(url)` | Overrides the server passed to the constructor. |
 
-Base URL: `https://api.together.ai/v1`.
-
-Some operations declare their own server in the spec, `https://api.together.ai/v2`: the paths under `/organizations`, `/public`, `/supported-models` and `/videos`, and some under `/projects`. The generated client ignores per-operation servers and always uses the base URL given to the constructor, so call those operations through a second client created with `https://api.together.ai/v2`.
+Base URL: `https://api.together.ai`. The generated paths already include `/v1` or `/v2`, so one client reaches every operation.
 
 ## Calling operations
 

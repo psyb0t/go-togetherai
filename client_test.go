@@ -31,7 +31,7 @@ func newTestClient(
 		},
 	)
 
-	client, err := NewClientWithResponses(srv.URL+"/v1", auth)
+	client, err := NewClientWithResponses(srv.URL, auth)
 	require.NoError(t, err)
 
 	return client
@@ -42,14 +42,16 @@ func TestModels(t *testing.T) {
 
 	tests := []struct {
 		name      string
-		params    *ModelsParams
+		params    *SupportedModelsServiceListSupportedModelsParams
 		wantQuery string
 	}{
 		{name: "no params", params: nil, wantQuery: ""},
 		{
-			name:      "dedicated",
-			params:    &ModelsParams{Dedicated: new(true)},
-			wantQuery: "dedicated=true",
+			name: "search",
+			params: &SupportedModelsServiceListSupportedModelsParams{
+				Search: new("llama"),
+			},
+			wantQuery: "search=llama",
 		},
 	}
 
@@ -60,28 +62,25 @@ func TestModels(t *testing.T) {
 			client := newTestClient(t,
 				func(w http.ResponseWriter, r *http.Request) {
 					assert.Equal(t, http.MethodGet, r.Method)
-					assert.Equal(t, "/v1/models", r.URL.Path)
+					assert.Equal(t, "/v2/supported-models", r.URL.Path)
 					assert.Equal(t, tt.wantQuery, r.URL.RawQuery)
 					assert.Equal(t, "Bearer "+testAPIKey,
 						r.Header.Get("Authorization"))
 
 					w.Header().Set("Content-Type", "application/json")
-					_, _ = io.WriteString(w, `[{"id":"org/model-a",`+
-						`"object":"model","created":1,"type":"chat",`+
-						`"context_length":8192}]`)
+					_, _ = io.WriteString(w,
+						`{"object":"list",`+
+							`"data":[{"id":"org/model-a"}]}`)
 				})
 
-			res, err := client.ModelsWithResponse(
-				context.Background(), tt.params)
+			res, err := client.
+				SupportedModelsServiceListSupportedModelsWithResponse(
+					context.Background(), tt.params)
 			require.NoError(t, err)
 			require.Equal(t, http.StatusOK, res.StatusCode())
 			require.NotNil(t, res.JSON200)
-			require.Len(t, *res.JSON200, 1)
-
-			model := (*res.JSON200)[0]
-			assert.Equal(t, "org/model-a", model.Id)
-			require.NotNil(t, model.ContextLength)
-			assert.Equal(t, 8192, *model.ContextLength)
+			require.Len(t, res.JSON200.Data, 1)
+			assert.Equal(t, "org/model-a", res.JSON200.Data[0].Id)
 		})
 	}
 }

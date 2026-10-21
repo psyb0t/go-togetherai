@@ -2,6 +2,17 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.0, 2026-10-21
+
+- Breaking: the generated client now follows the new upstream spec, which puts the version in each path. Create the client with the base URL `https://api.together.ai` and drop `/v1` or `/v2`. One client now reaches both versions.
+- Breaking: methods without a version in their name were removed and replaced by versioned ones. For example `Client.GetFineTunesModelsSupported`, `Client.GetFiles`, `Client.GetBatches` and `Client.GetDeployments` became `GetV1FineTunesModelsSupported`, `GetV1Files`, `GetV1Batches` and `GetV1Deployments`. The `WithResponse` variants and the `ClientInterface` and `ClientWithResponsesInterface` entries changed the same way, as did the matching params types such as `GetFineTunesModelsLimitsParams`.
+- Breaking: the upstream spec dropped `GET /v1/models`, so `Client.Models`, `ClientWithResponses.ModelsWithResponse` and `ModelsParams` are gone. `SupportedModelsServiceListSupportedModelsWithResponse` calls `/v2/supported-models` and returns a different shape, with the models in `JSON200.Data`.
+- Breaking: `ChatCompletionMessageParam.FromChatCompletionFunctionMessageParam` and `MergeChatCompletionFunctionMessageParam` were removed.
+- Breaking: the `FunctionCall` field was removed from the delta in `ChatCompletionChunk.Choices`.
+- Added many `V1` operations, for example `GetV1FilesIdContent`, `PostV1FineTunesEstimatePrice`, `PostV1ImagesGenerations` and `PostV1DeploymentsIdRollback`. See the type definitions for the full list.
+- The module now requires Go 1.26.10, which fixes `GO-2026-6809` in `crypto/x509`. The development image is pinned to the same version.
+- The README, the agent skill and the tests use the new base URL and the supported models call.
+
 ## v0.1.3, 2026-10-17
 
 - Documentation only. The agent skill explains how to look up every endpoint, parameter and model with `go doc` or on pkg.go.dev, and declares its license.

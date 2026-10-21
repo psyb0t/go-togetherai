@@ -25,7 +25,7 @@ For install, client options, more operations and response handling, see [referen
 ## Security & safety
 
 - Read the API key from an environment variable such as `TOGETHER_API_KEY`. Never hardcode it, commit it or log it, and never print request headers.
-- Requests go only to the base URL you pass: `https://api.together.ai/v1`, or `https://api.together.ai/v2` for the operations the spec serves there (see the setup reference). Prompts and files you send are processed by Together AI.
+- Requests go only to the base URL you pass: `https://api.together.ai`. The generated paths already include `/v1` and `/v2`. Prompts and files you send are processed by Together AI.
 - Fine-tuning jobs, dedicated endpoints and clusters cost money, and delete endpoints remove data. Call them only when the user asked for that action.
 
 ## When to use
@@ -44,7 +44,7 @@ The examples below cover a few calls. Every operation in the spec has a generate
 
 ```bash
 go doc github.com/psyb0t/go-togetherai ClientWithResponsesInterface  # every endpoint method
-go doc github.com/psyb0t/go-togetherai ModelsParams                  # one method, params type or model
+go doc github.com/psyb0t/go-togetherai SupportedModelsServiceListSupportedModelsParams # one method, params type or model
 go doc -all github.com/psyb0t/go-togetherai                          # the whole package
 ```
 
@@ -77,20 +77,20 @@ auth := together.WithRequestEditorFn(
 )
 
 client, err := together.NewClientWithResponses(
-	"https://api.together.ai/v1",
+	"https://api.together.ai",
 	auth,
 )
 if err != nil {
 	return err
 }
 
-models, err := client.ModelsWithResponse(ctx, nil)
+models, err := client.SupportedModelsServiceListSupportedModelsWithResponse(ctx, nil)
 if err != nil {
 	return err // transport failure
 }
 
 if models.JSON200 != nil {
-	for _, model := range *models.JSON200 {
+	for _, model := range models.JSON200.Data {
 		fmt.Println(model.Id)
 	}
 }

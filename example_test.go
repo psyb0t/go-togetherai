@@ -12,13 +12,13 @@ import (
 )
 
 // Example is the README usage example, pointed at a local test server
-// instead of https://api.together.ai/v1.
+// instead of https://api.together.ai.
 func Example() {
 	srv := httptest.NewServer(http.HandlerFunc(
 		func(w http.ResponseWriter, _ *http.Request) {
 			w.Header().Set("Content-Type", "application/json")
-			_, _ = io.WriteString(w, `[{"id":"org/model-a",`+
-				`"object":"model","created":1,"type":"chat"}]`)
+			_, _ = io.WriteString(w,
+				`{"object":"list","data":[{"id":"org/model-a"}]}`)
 		},
 	))
 	defer srv.Close()
@@ -32,17 +32,18 @@ func Example() {
 		},
 	)
 
-	client, err := together.NewClientWithResponses(srv.URL+"/v1", auth)
+	client, err := together.NewClientWithResponses(srv.URL, auth)
 	if err != nil {
 		panic(err)
 	}
 
-	res, err := client.ModelsWithResponse(context.Background(), nil)
+	res, err := client.SupportedModelsServiceListSupportedModelsWithResponse(
+		context.Background(), nil)
 	if err != nil {
 		panic(err)
 	}
 
-	for _, model := range *res.JSON200 {
+	for _, model := range res.JSON200.Data {
 		fmt.Println(model.Id)
 	}
 
