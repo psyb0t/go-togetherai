@@ -13016,11 +13016,6 @@ type RemediationServiceListRemediationsParamsTrigger string
 // RemediationServiceListRemediationsParamsMode defines parameters for RemediationServiceListRemediations.
 type RemediationServiceListRemediationsParamsMode string
 
-// RemediationServiceCreateRemediationParams defines parameters for RemediationServiceCreateRemediation.
-type RemediationServiceCreateRemediationParams struct {
-	RemediationId *string `form:"remediation_id,omitempty" json:"remediation_id,omitempty"`
-}
-
 // HealthCheckServiceListPassiveHealthCheckAlertsParams defines parameters for HealthCheckServiceListPassiveHealthCheckAlerts.
 type HealthCheckServiceListPassiveHealthCheckAlertsParams struct {
 	IntentId       *string                                                               `form:"intent_id,omitempty" json:"intent_id,omitempty"`
@@ -19468,7 +19463,7 @@ type ClientInterface interface {
 	// Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 	// The user must call /approve to start the actual remediation process.
 	// These operations can also be rejected by calling /reject.
-	RemediationServiceCreateRemediationWithBody(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemediationServiceCreateRemediationWithBody(ctx context.Context, clusterId string, instanceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemediationServiceCreateRemediation performs a POST /v1/compute/clusters/{cluster_id}/instances/{instance_id}/remediations (the `RemediationServiceCreateRemediation` operationId) request.
 	// Takes a body of the `application/json` content type.
@@ -19480,7 +19475,7 @@ type ClientInterface interface {
 	// Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 	// The user must call /approve to start the actual remediation process.
 	// These operations can also be rejected by calling /reject.
-	RemediationServiceCreateRemediation(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemediationServiceCreateRemediation(ctx context.Context, clusterId string, instanceId string, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemediationServiceGetRemediation performs a GET /v1/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id} (the `RemediationServiceGetRemediation` operationId) request.
 	//
@@ -22112,8 +22107,8 @@ func (c *Client) RemediationServiceListRemediations(ctx context.Context, cluster
 // Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 // The user must call /approve to start the actual remediation process.
 // These operations can also be rejected by calling /reject.
-func (c *Client) RemediationServiceCreateRemediationWithBody(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemediationServiceCreateRemediationRequestWithBody(c.Server, clusterId, instanceId, params, contentType, body)
+func (c *Client) RemediationServiceCreateRemediationWithBody(ctx context.Context, clusterId string, instanceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemediationServiceCreateRemediationRequestWithBody(c.Server, clusterId, instanceId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -22134,8 +22129,8 @@ func (c *Client) RemediationServiceCreateRemediationWithBody(ctx context.Context
 // Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 // The user must call /approve to start the actual remediation process.
 // These operations can also be rejected by calling /reject.
-func (c *Client) RemediationServiceCreateRemediation(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemediationServiceCreateRemediationRequest(c.Server, clusterId, instanceId, params, body)
+func (c *Client) RemediationServiceCreateRemediation(ctx context.Context, clusterId string, instanceId string, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemediationServiceCreateRemediationRequest(c.Server, clusterId, instanceId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -27430,18 +27425,18 @@ func NewRemediationServiceListRemediationsRequest(server string, clusterId strin
 }
 
 // NewRemediationServiceCreateRemediationRequest calls the generic RemediationServiceCreateRemediation builder with application/json body
-func NewRemediationServiceCreateRemediationRequest(server string, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, body RemediationServiceCreateRemediationJSONRequestBody) (*http.Request, error) {
+func NewRemediationServiceCreateRemediationRequest(server string, clusterId string, instanceId string, body RemediationServiceCreateRemediationJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewRemediationServiceCreateRemediationRequestWithBody(server, clusterId, instanceId, params, "application/json", bodyReader)
+	return NewRemediationServiceCreateRemediationRequestWithBody(server, clusterId, instanceId, "application/json", bodyReader)
 }
 
 // NewRemediationServiceCreateRemediationRequestWithBody constructs an http.Request for the RemediationServiceCreateRemediation method, with any body, and a specified content type
-func NewRemediationServiceCreateRemediationRequestWithBody(server string, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewRemediationServiceCreateRemediationRequestWithBody(server string, clusterId string, instanceId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -27471,33 +27466,6 @@ func NewRemediationServiceCreateRemediationRequestWithBody(server string, cluste
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.RemediationId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "remediation_id", *params.RemediationId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
 	}
 
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
@@ -36960,7 +36928,7 @@ type ClientWithResponsesInterface interface {
 	// These operations can also be rejected by calling /reject.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	RemediationServiceCreateRemediationWithBodyWithResponse(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error)
+	RemediationServiceCreateRemediationWithBodyWithResponse(ctx context.Context, clusterId string, instanceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error)
 
 	// RemediationServiceCreateRemediationWithResponse performs a POST /v1/compute/clusters/{cluster_id}/instances/{instance_id}/remediations (the `RemediationServiceCreateRemediation` operationId) request.
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
@@ -36972,7 +36940,7 @@ type ClientWithResponsesInterface interface {
 	// Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 	// The user must call /approve to start the actual remediation process.
 	// These operations can also be rejected by calling /reject.
-	RemediationServiceCreateRemediationWithResponse(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error)
+	RemediationServiceCreateRemediationWithResponse(ctx context.Context, clusterId string, instanceId string, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error)
 
 	// RemediationServiceGetRemediationWithResponse performs a GET /v1/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id} (the `RemediationServiceGetRemediation` operationId) request.
 	//
@@ -49614,8 +49582,8 @@ func (c *ClientWithResponses) RemediationServiceListRemediationsWithResponse(ctx
 // These operations can also be rejected by calling /reject.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) RemediationServiceCreateRemediationWithBodyWithResponse(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error) {
-	rsp, err := c.RemediationServiceCreateRemediationWithBody(ctx, clusterId, instanceId, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) RemediationServiceCreateRemediationWithBodyWithResponse(ctx context.Context, clusterId string, instanceId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error) {
+	rsp, err := c.RemediationServiceCreateRemediationWithBody(ctx, clusterId, instanceId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -49632,8 +49600,8 @@ func (c *ClientWithResponses) RemediationServiceCreateRemediationWithBodyWithRes
 // Our system may trigger automated remediations that require approval. These remediations are created with PENDING_APPROVAL state.
 // The user must call /approve to start the actual remediation process.
 // These operations can also be rejected by calling /reject.
-func (c *ClientWithResponses) RemediationServiceCreateRemediationWithResponse(ctx context.Context, clusterId string, instanceId string, params *RemediationServiceCreateRemediationParams, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error) {
-	rsp, err := c.RemediationServiceCreateRemediation(ctx, clusterId, instanceId, params, body, reqEditors...)
+func (c *ClientWithResponses) RemediationServiceCreateRemediationWithResponse(ctx context.Context, clusterId string, instanceId string, body RemediationServiceCreateRemediationJSONRequestBody, reqEditors ...RequestEditorFn) (*RemediationServiceCreateRemediationResponse, error) {
+	rsp, err := c.RemediationServiceCreateRemediation(ctx, clusterId, instanceId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}

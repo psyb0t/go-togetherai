@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.3.0, 2026-10-22
+
+- Breaking: the upstream spec dropped the optional `remediation_id` query parameter from the create remediation operation, so `RemediationServiceCreateRemediationParams` was removed.
+- Breaking: the `params *RemediationServiceCreateRemediationParams` argument was removed from `Client.RemediationServiceCreateRemediation`, `Client.RemediationServiceCreateRemediationWithBody`, `ClientWithResponses.RemediationServiceCreateRemediationWithResponse` and `ClientWithResponses.RemediationServiceCreateRemediationWithBodyWithResponse`. The `ClientInterface` and `ClientWithResponsesInterface` entries changed the same way.
+- Breaking: `NewRemediationServiceCreateRemediationRequest` and `NewRemediationServiceCreateRemediationRequestWithBody` no longer take the params argument.
+
 ## v0.2.0, 2026-10-21
 
 - Breaking: the generated client now follows the new upstream spec, which puts the version in each path. Create the client with the base URL `https://api.together.ai` and drop `/v1` or `/v2`. One client now reaches both versions.
