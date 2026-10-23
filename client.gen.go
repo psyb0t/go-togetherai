@@ -310,6 +310,27 @@ func (e BatchJobStatus) Valid() bool {
 	}
 }
 
+// Defines values for BillingUsageLineItemAppliedCreditType.
+const (
+	BillingUsageLineItemAppliedCreditTypeCREDIT   BillingUsageLineItemAppliedCreditType = "CREDIT"
+	BillingUsageLineItemAppliedCreditTypePOSTPAID BillingUsageLineItemAppliedCreditType = "POSTPAID"
+	BillingUsageLineItemAppliedCreditTypePREPAID  BillingUsageLineItemAppliedCreditType = "PREPAID"
+)
+
+// Valid indicates whether the value is a known member of the BillingUsageLineItemAppliedCreditType enum.
+func (e BillingUsageLineItemAppliedCreditType) Valid() bool {
+	switch e {
+	case BillingUsageLineItemAppliedCreditTypeCREDIT:
+		return true
+	case BillingUsageLineItemAppliedCreditTypePOSTPAID:
+		return true
+	case BillingUsageLineItemAppliedCreditTypePREPAID:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for BillingUsageReportCurrency.
 const (
 	BillingUsageReportCurrencyUSD BillingUsageReportCurrency = "USD"
@@ -5205,6 +5226,11 @@ type BatchJobWithWarning struct {
 
 // BillingUsageLineItem defines model for BillingUsageLineItem.
 type BillingUsageLineItem struct {
+	// AppliedCredit Credit covering this usage. Omitted for uncovered usage.
+	AppliedCredit *struct {
+		Type BillingUsageLineItemAppliedCreditType `json:"type"`
+	} `json:"applied_credit,omitempty"`
+
 	// Attributes Resource identifiers for attribution, varying by product.
 	Attributes map[string]string `json:"attributes"`
 
@@ -5223,6 +5249,9 @@ type BillingUsageLineItem struct {
 	// UnitPrice Per-unit price in USD as a decimal string.
 	UnitPrice string `json:"unit_price"`
 }
+
+// BillingUsageLineItemAppliedCreditType defines model for BillingUsageLineItem.AppliedCredit.Type.
+type BillingUsageLineItemAppliedCreditType string
 
 // BillingUsageReport defines model for BillingUsageReport.
 type BillingUsageReport struct {

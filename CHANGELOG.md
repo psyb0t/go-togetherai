@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.3.1, 2026-10-23
+
+- Added the optional `AppliedCredit` field to `BillingUsageLineItem`. It holds the credit that covers the usage and is nil for uncovered usage.
+- Added the `BillingUsageLineItemAppliedCreditType` type with the constants `BillingUsageLineItemAppliedCreditTypeCREDIT`, `BillingUsageLineItemAppliedCreditTypePOSTPAID` and `BillingUsageLineItemAppliedCreditTypePREPAID`, and a `Valid` method.
+
 ## v0.3.0, 2026-10-22
 
 - Breaking: the upstream spec dropped the optional `remediation_id` query parameter from the create remediation operation, so `RemediationServiceCreateRemediationParams` was removed.
