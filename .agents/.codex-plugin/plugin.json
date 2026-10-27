@@ -1,6 +1,6 @@
 {
   "name": "go-togetherai",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Unofficial Go client for the Together AI REST API, generated with oapi-codegen, with one typed method per endpoint.",
   "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
   "homepage": "https://github.com/psyb0t/go-togetherai",

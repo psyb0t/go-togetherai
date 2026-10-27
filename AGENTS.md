@@ -13,7 +13,7 @@ Generation pipeline, declared in `gen.go` and run by `make generate`:
 
 ## Stack
 
-- Go 1.26.9, package `together` at the module root.
+- Go 1.26.10, package `together` at the module root.
 - oapi-codegen v2, golangci-lint and `patchspec` as `go tool` dependencies.
 - `patchspec` uses `gopkg.in/yaml.v3` and `github.com/psyb0t/ctxerrors`.
 
