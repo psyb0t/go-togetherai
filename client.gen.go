@@ -2624,6 +2624,7 @@ func (e GPUClusterCreateRequestCommonClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestCommonGpuTypeB200SXM    GPUClusterCreateRequestCommonGpuType = "B200_SXM"
 	GPUClusterCreateRequestCommonGpuTypeB300SXM    GPUClusterCreateRequestCommonGpuType = "B300_SXM"
+	GPUClusterCreateRequestCommonGpuTypeGB200SXM   GPUClusterCreateRequestCommonGpuType = "GB200_SXM"
 	GPUClusterCreateRequestCommonGpuTypeH100SXM    GPUClusterCreateRequestCommonGpuType = "H100_SXM"
 	GPUClusterCreateRequestCommonGpuTypeH100SXMINF GPUClusterCreateRequestCommonGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestCommonGpuTypeH200SXM    GPUClusterCreateRequestCommonGpuType = "H200_SXM"
@@ -2637,6 +2638,8 @@ func (e GPUClusterCreateRequestCommonGpuType) Valid() bool {
 	case GPUClusterCreateRequestCommonGpuTypeB200SXM:
 		return true
 	case GPUClusterCreateRequestCommonGpuTypeB300SXM:
+		return true
+	case GPUClusterCreateRequestCommonGpuTypeGB200SXM:
 		return true
 	case GPUClusterCreateRequestCommonGpuTypeH100SXM:
 		return true
@@ -2696,6 +2699,7 @@ func (e GPUClusterCreateRequestLegacyNvidiaClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeB200SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "B200_SXM"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeB300SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "B300_SXM"
+	GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM   GPUClusterCreateRequestLegacyNvidiaGpuType = "GB200_SXM"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "H100_SXM"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXMINF GPUClusterCreateRequestLegacyNvidiaGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH200SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "H200_SXM"
@@ -2709,6 +2713,8 @@ func (e GPUClusterCreateRequestLegacyNvidiaGpuType) Valid() bool {
 	case GPUClusterCreateRequestLegacyNvidiaGpuTypeB200SXM:
 		return true
 	case GPUClusterCreateRequestLegacyNvidiaGpuTypeB300SXM:
+		return true
+	case GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM:
 		return true
 	case GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXM:
 		return true
@@ -2768,6 +2774,7 @@ func (e GPUClusterCreateRequestNvidiaVersionClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestNvidiaVersionGpuTypeB200SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "B200_SXM"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeB300SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "B300_SXM"
+	GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM   GPUClusterCreateRequestNvidiaVersionGpuType = "GB200_SXM"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "H100_SXM"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXMINF GPUClusterCreateRequestNvidiaVersionGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH200SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "H200_SXM"
@@ -2781,6 +2788,8 @@ func (e GPUClusterCreateRequestNvidiaVersionGpuType) Valid() bool {
 	case GPUClusterCreateRequestNvidiaVersionGpuTypeB200SXM:
 		return true
 	case GPUClusterCreateRequestNvidiaVersionGpuTypeB300SXM:
+		return true
+	case GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM:
 		return true
 	case GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXM:
 		return true
@@ -2812,6 +2821,42 @@ func (e GPUClusterInfoBillingType) Valid() bool {
 	case GPUClusterInfoBillingTypeRESERVED:
 		return true
 	case GPUClusterInfoBillingTypeSCHEDULEDCAPACITY:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GPUClusterInfoGpuType.
+const (
+	GPUClusterInfoGpuTypeB200SXM    GPUClusterInfoGpuType = "B200_SXM"
+	GPUClusterInfoGpuTypeB300SXM    GPUClusterInfoGpuType = "B300_SXM"
+	GPUClusterInfoGpuTypeGB200SXM   GPUClusterInfoGpuType = "GB200_SXM"
+	GPUClusterInfoGpuTypeH100SXM    GPUClusterInfoGpuType = "H100_SXM"
+	GPUClusterInfoGpuTypeH100SXMINF GPUClusterInfoGpuType = "H100_SXM_INF"
+	GPUClusterInfoGpuTypeH200SXM    GPUClusterInfoGpuType = "H200_SXM"
+	GPUClusterInfoGpuTypeL40PCIE    GPUClusterInfoGpuType = "L40_PCIE"
+	GPUClusterInfoGpuTypeRTX6000PCI GPUClusterInfoGpuType = "RTX_6000_PCI"
+)
+
+// Valid indicates whether the value is a known member of the GPUClusterInfoGpuType enum.
+func (e GPUClusterInfoGpuType) Valid() bool {
+	switch e {
+	case GPUClusterInfoGpuTypeB200SXM:
+		return true
+	case GPUClusterInfoGpuTypeB300SXM:
+		return true
+	case GPUClusterInfoGpuTypeGB200SXM:
+		return true
+	case GPUClusterInfoGpuTypeH100SXM:
+		return true
+	case GPUClusterInfoGpuTypeH100SXMINF:
+		return true
+	case GPUClusterInfoGpuTypeH200SXM:
+		return true
+	case GPUClusterInfoGpuTypeL40PCIE:
+		return true
+	case GPUClusterInfoGpuTypeRTX6000PCI:
 		return true
 	default:
 		return false
@@ -5979,6 +6024,9 @@ type CreateSecretRequest struct {
 	// ProjectId ProjectID is ignored - the project is automatically determined from your authentication
 	ProjectId *string `json:"project_id,omitempty"`
 
+	// TtlSeconds TTLSeconds is how long the secret lives before it is deleted, between 86400 (1 day) and 1209600 (14 days)
+	TtlSeconds *int `json:"ttl_seconds,omitempty"`
+
 	// Value Value is the sensitive data to store securely (e.g., API keys, passwords, tokens). Encrypted at rest.
 	Value string `json:"value"`
 }
@@ -8642,6 +8690,9 @@ type EnvironmentVariable struct {
 
 	// ValueFromSecret ValueFromSecret references a secret by name or ID to use as the value. Use this for sensitive values like API keys or passwords. Either Value or ValueFromSecret must be set, but not both
 	ValueFromSecret *string `json:"value_from_secret,omitempty"`
+
+	// ValueFromSecretExpiresAt ValueFromSecretExpiresAt is the ISO8601 timestamp when the referenced secret expires and is deleted. Read-only, ignored in requests
+	ValueFromSecretExpiresAt *time.Time `json:"value_from_secret_expires_at,omitempty"`
 }
 
 // ErrorData defines model for ErrorData.
@@ -10012,8 +10063,10 @@ type GPUClusterInfo struct {
 	DurationHours          *int `json:"duration_hours,omitempty"`
 
 	// FirstReadyAt Timestamp when the cluster first reached the Ready phase.
-	FirstReadyAt   *time.Time                `json:"first_ready_at,omitempty"`
-	GpuType        interface{}               `json:"gpu_type"`
+	FirstReadyAt *time.Time `json:"first_ready_at,omitempty"`
+
+	// GpuType Type of GPU used by the cluster.
+	GpuType        GPUClusterInfoGpuType     `json:"gpu_type"`
 	GpuWorkerNodes []GPUClusterGPUWorkerNode `json:"gpu_worker_nodes"`
 	InstallTraefik *bool                     `json:"install_traefik,omitempty"`
 
@@ -10066,6 +10119,9 @@ type GPUClusterInfo struct {
 
 // GPUClusterInfoBillingType Billing type for the cluster (RESERVED, ON_DEMAND, or SCHEDULED_CAPACITY).
 type GPUClusterInfoBillingType string
+
+// GPUClusterInfoGpuType Type of GPU used by the cluster.
+type GPUClusterInfoGpuType string
 
 // GPUClusterNodeLifecycleEvent Node lifecycle event included in a GPU cluster timeline.
 type GPUClusterNodeLifecycleEvent struct {
@@ -10984,6 +11040,9 @@ type RLCreateModelResourcesRequest struct {
 	// ComputeConfig Compute layout to provision.
 	ComputeConfig *RLComputeConfigCreateRequest `json:"compute_config,omitempty"`
 
+	// InactiveTimeout Seconds without activity after which the resource stops and its sessions expire, counted from when it becomes ready and from its last activity. Every operation on any of its sessions restarts the count, and an extend expiry call can keep it up longer.
+	InactiveTimeout *int `json:"inactive_timeout,omitempty"`
+
 	// LoraEnabled Whether the resource hosts LoRA sessions or a single full-weight session
 	LoraEnabled *bool `json:"lora_enabled,omitempty"`
 
@@ -11054,6 +11113,12 @@ type RLEncodedTextChunkTokens1 = int
 // RLEncodedTextChunk_Tokens_Item defines model for RL.EncodedTextChunk.tokens.Item.
 type RLEncodedTextChunk_Tokens_Item struct {
 	union json.RawMessage
+}
+
+// RLExtendModelResourcesExpiryRequest Request to keep a model resource from stopping for inactivity
+type RLExtendModelResourcesExpiryRequest struct {
+	// Seconds Seconds from now the resource must not stop for inactivity.
+	Seconds int `json:"seconds"`
 }
 
 // RLForwardBackwardBody defines model for RL.ForwardBackwardBody.
@@ -11316,8 +11381,14 @@ type RLModelResources struct {
 	// Error Structured detail for the model resource's current error. Set when the resource is in an error state.
 	Error *RLModelResourcesError `json:"error,omitempty"`
 
+	// ExpiresAt The earliest time the resource can stop for inactivity, which also expires its sessions. It is the resource's last activity plus `inactive_timeout` seconds. Becoming ready, a session start and every operation on any of its sessions count as activity, and the resource does not stop while an operation is running. An extend expiry call can move it later. It never moves earlier. Refreshed about once a minute. Set while the resource is ready.
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+
 	// Id Unique identifier for the model resource
 	Id string `json:"id"`
+
+	// InactiveTimeout Seconds without activity after which the resource stops and its sessions expire. Every operation on any of its sessions restarts the count.
+	InactiveTimeout int `json:"inactive_timeout"`
 
 	// LoraEnabled Whether the resource hosts LoRA sessions or a full-weight session
 	LoraEnabled bool `json:"lora_enabled"`
@@ -12392,6 +12463,9 @@ type SecretResponseItem struct {
 	// Description Description is a human-readable description of the secret's purpose
 	Description *string `json:"description,omitempty"`
 
+	// ExpiresAt ExpiresAt is the ISO8601 timestamp when this secret expires and is deleted. Changing the value extends it. Omitted for secrets that never expire
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+
 	// Id ID is the unique identifier for this secret
 	Id *string `json:"id,omitempty"`
 
@@ -12403,6 +12477,9 @@ type SecretResponseItem struct {
 
 	// Object The object type, which is always `secret`.
 	Object interface{} `json:"object,omitempty"`
+
+	// TtlSeconds TTLSeconds is the secret's lifetime in seconds. Omitted when no TTL is set
+	TtlSeconds *int `json:"ttl_seconds,omitempty"`
 
 	// UpdatedAt UpdatedAt is the ISO8601 timestamp when this secret was last updated
 	UpdatedAt *string `json:"updated_at,omitempty"`
@@ -12624,6 +12701,9 @@ type UpdateSecretRequest struct {
 
 	// ProjectId ProjectID is ignored - the project is automatically determined from your authentication
 	ProjectId *string `json:"project_id,omitempty"`
+
+	// TtlSeconds TTLSeconds sets a new lifetime and restarts the expiry from now, between 86400 (1 day) and 1209600 (14 days)
+	TtlSeconds *int `json:"ttl_seconds,omitempty"`
 
 	// Value Value is the new sensitive data to store securely. Updating this replaces the existing secret value.
 	Value *string `json:"value,omitempty"`
@@ -13865,6 +13945,9 @@ type CreateModelResourcesJSONRequestBody = RLCreateModelResourcesRequest
 
 // EstimateModelResourcesCostJSONRequestBody defines body for EstimateModelResourcesCost for application/json ContentType.
 type EstimateModelResourcesCostJSONRequestBody = RLCreateModelResourcesRequest
+
+// ExtendModelResourcesExpiryJSONRequestBody defines body for ExtendModelResourcesExpiry for application/json ContentType.
+type ExtendModelResourcesExpiryJSONRequestBody = RLExtendModelResourcesExpiryRequest
 
 // StartTrainingSessionJSONRequestBody defines body for StartTrainingSession for application/json ContentType.
 type StartTrainingSessionJSONRequestBody = RLStartTrainingSessionRequest
@@ -20358,6 +20441,24 @@ type ClientInterface interface {
 	// Corresponds with GET /v1/rl/model-resources/{model_resources_id} (the `GetModelResources` operationId).
 	GetModelResources(ctx context.Context, modelResourcesId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ExtendModelResourcesExpiryWithBody Extend model resources expiry
+	//
+	// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+	ExtendModelResourcesExpiryWithBody(ctx context.Context, modelResourcesId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ExtendModelResourcesExpiry Extend model resources expiry
+	//
+	// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+	ExtendModelResourcesExpiry(ctx context.Context, modelResourcesId string, body ExtendModelResourcesExpiryJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// StopModelResources Stop model resources
 	//
 	// Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
@@ -23902,6 +24003,44 @@ func (c *Client) EstimateModelResourcesCost(ctx context.Context, body EstimateMo
 // Corresponds with GET /v1/rl/model-resources/{model_resources_id} (the `GetModelResources` operationId).
 func (c *Client) GetModelResources(ctx context.Context, modelResourcesId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetModelResourcesRequest(c.Server, modelResourcesId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ExtendModelResourcesExpiryWithBody Extend model resources expiry
+//
+// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+func (c *Client) ExtendModelResourcesExpiryWithBody(ctx context.Context, modelResourcesId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewExtendModelResourcesExpiryRequestWithBody(c.Server, modelResourcesId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ExtendModelResourcesExpiry Extend model resources expiry
+//
+// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+func (c *Client) ExtendModelResourcesExpiry(ctx context.Context, modelResourcesId string, body ExtendModelResourcesExpiryJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewExtendModelResourcesExpiryRequest(c.Server, modelResourcesId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -30639,6 +30778,53 @@ func NewGetModelResourcesRequest(server string, modelResourcesId string) (*http.
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewExtendModelResourcesExpiryRequest calls the generic ExtendModelResourcesExpiry builder with application/json body
+func NewExtendModelResourcesExpiryRequest(server string, modelResourcesId string, body ExtendModelResourcesExpiryJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewExtendModelResourcesExpiryRequestWithBody(server, modelResourcesId, "application/json", bodyReader)
+}
+
+// NewExtendModelResourcesExpiryRequestWithBody constructs an http.Request for the ExtendModelResourcesExpiry method, with any body, and a specified content type
+func NewExtendModelResourcesExpiryRequestWithBody(server string, modelResourcesId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "model_resources_id", modelResourcesId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/rl/model-resources/%s/extend-expiry", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -37919,6 +38105,24 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /v1/rl/model-resources/{model_resources_id} (the `GetModelResources` operationId).
 	GetModelResourcesWithResponse(ctx context.Context, modelResourcesId string, reqEditors ...RequestEditorFn) (*GetModelResourcesResponse, error)
 
+	// ExtendModelResourcesExpiryWithBodyWithResponse Extend model resources expiry
+	//
+	// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+	ExtendModelResourcesExpiryWithBodyWithResponse(ctx context.Context, modelResourcesId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ExtendModelResourcesExpiryResponse, error)
+
+	// ExtendModelResourcesExpiryWithResponse Extend model resources expiry
+	//
+	// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+	ExtendModelResourcesExpiryWithResponse(ctx context.Context, modelResourcesId string, body ExtendModelResourcesExpiryJSONRequestBody, reqEditors ...RequestEditorFn) (*ExtendModelResourcesExpiryResponse, error)
+
 	// StopModelResourcesWithResponse Stop model resources
 	//
 	// Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
@@ -44118,6 +44322,54 @@ func (r GetModelResourcesResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetModelResourcesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ExtendModelResourcesExpiryResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RLModelResources
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorData
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ExtendModelResourcesExpiryResponse) GetJSON200() *RLModelResources {
+	return r.JSON200
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r ExtendModelResourcesExpiryResponse) GetJSONDefault() *ErrorData {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r ExtendModelResourcesExpiryResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ExtendModelResourcesExpiryResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ExtendModelResourcesExpiryResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ExtendModelResourcesExpiryResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -51119,6 +51371,36 @@ func (c *ClientWithResponses) GetModelResourcesWithResponse(ctx context.Context,
 	return ParseGetModelResourcesResponse(rsp)
 }
 
+// ExtendModelResourcesExpiryWithBodyWithResponse Extend model resources expiry
+//
+// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+func (c *ClientWithResponses) ExtendModelResourcesExpiryWithBodyWithResponse(ctx context.Context, modelResourcesId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ExtendModelResourcesExpiryResponse, error) {
+	rsp, err := c.ExtendModelResourcesExpiryWithBody(ctx, modelResourcesId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseExtendModelResourcesExpiryResponse(rsp)
+}
+
+// ExtendModelResourcesExpiryWithResponse Extend model resources expiry
+//
+// Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource's `expires_at` to at least that time, and never earlier. Every operation on the resource's sessions already keeps it up for `inactive_timeout` seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/extend-expiry (the `ExtendModelResourcesExpiry` operationId).
+func (c *ClientWithResponses) ExtendModelResourcesExpiryWithResponse(ctx context.Context, modelResourcesId string, body ExtendModelResourcesExpiryJSONRequestBody, reqEditors ...RequestEditorFn) (*ExtendModelResourcesExpiryResponse, error) {
+	rsp, err := c.ExtendModelResourcesExpiry(ctx, modelResourcesId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseExtendModelResourcesExpiryResponse(rsp)
+}
+
 // StopModelResourcesWithResponse Stop model resources
 //
 // Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
@@ -56608,6 +56890,39 @@ func ParseGetModelResourcesResponse(rsp *http.Response) (*GetModelResourcesRespo
 	}
 
 	response := &GetModelResourcesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RLModelResources
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorData
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseExtendModelResourcesExpiryResponse parses an HTTP response from a ExtendModelResourcesExpiryWithResponse call
+func ParseExtendModelResourcesExpiryResponse(rsp *http.Response) (*ExtendModelResourcesExpiryResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ExtendModelResourcesExpiryResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

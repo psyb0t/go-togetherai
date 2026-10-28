@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.4.0, 2026-10-28
+
+- Breaking: the type of `GPUClusterInfo.GpuType` changed from `interface{}` to the new `GPUClusterInfoGpuType`. Code that reads or sets the field as an untyped value must use the new type.
+- Added the `GPUClusterInfoGpuType` enum with the constants `GPUClusterInfoGpuTypeB200SXM`, `GPUClusterInfoGpuTypeB300SXM`, `GPUClusterInfoGpuTypeGB200SXM`, `GPUClusterInfoGpuTypeH100SXM`, `GPUClusterInfoGpuTypeH100SXMINF`, `GPUClusterInfoGpuTypeH200SXM`, `GPUClusterInfoGpuTypeL40PCIE` and `GPUClusterInfoGpuTypeRTX6000PCI`, and a `Valid` method.
+- Added the `GB200_SXM` GPU type: `GPUClusterCreateRequestCommonGpuTypeGB200SXM`, `GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM` and `GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM`.
+- Added the `ExtendModelResourcesExpiry` operation: `Client.ExtendModelResourcesExpiry`, `Client.ExtendModelResourcesExpiryWithBody`, `ClientWithResponses.ExtendModelResourcesExpiryWithResponse` and `ClientWithResponses.ExtendModelResourcesExpiryWithBodyWithResponse`, plus `NewExtendModelResourcesExpiryRequest`, `NewExtendModelResourcesExpiryRequestWithBody`, `ParseExtendModelResourcesExpiryResponse`, `ExtendModelResourcesExpiryJSONRequestBody`, `ExtendModelResourcesExpiryResponse` and `RLExtendModelResourcesExpiryRequest`.
+- Breaking: `ClientInterface` and `ClientWithResponsesInterface` gained the four new `ExtendModelResourcesExpiry` methods, so custom implementations or mocks of them must add the methods.
+- Added `InactiveTimeout` to `RLCreateModelResourcesRequest` and `RLModelResources`, and `ExpiresAt` to `RLModelResources`.
+- Added `TtlSeconds` to `CreateSecretRequest` and `UpdateSecretRequest`, `TtlSeconds` and `ExpiresAt` to `SecretResponseItem`, and `ValueFromSecretExpiresAt` to `EnvironmentVariable`.
+
 ## v0.3.3, 2026-10-28
 
 - Updated Semgrep in the development image to 1.182.1 and refreshed its locked dependencies. certifi 2026.10.23 drops the emSign root CAs whose intermediate keys were compromised (GHSA-6q48-6c7w-9gw2).
