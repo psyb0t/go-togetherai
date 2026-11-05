@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.5.0, 2026-11-05
+
+- Development image package installation uses HTTPS and bounded retries for signed snapshot indexes and package downloads.
+- Breaking: Together AI specification 2.0.0 no longer generates TorchpassConfig and TorchpassState. Remove references to these models when updating.
+
 ## v0.4.0, 2026-10-28
 
 - Breaking: the type of `GPUClusterInfo.GpuType` changed from `interface{}` to the new `GPUClusterInfoGpuType`. Code that reads or sets the field as an untyped value must use the new type.

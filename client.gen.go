@@ -4787,14 +4787,11 @@ type AddOnConfig struct {
 
 	// SlurmWeb Configuration for the Slurm Web add-on.
 	SlurmWeb *SlurmWebConfig `json:"slurm_web,omitempty"`
-
-	// Torchpass Configuration for the Model Aware TorchPass add-on.
-	Torchpass *TorchpassConfig `json:"torchpass,omitempty"`
 }
 
 // AddOnCreateRequest defines model for AddOnCreateRequest.
 type AddOnCreateRequest struct {
-	// AddOnType Type of add-on. Valid values: 'dashboard', 'ingress', 'torchpass'.
+	// AddOnType Type of add-on. Valid values: 'dashboard', 'ingress'
 	AddOnType string `json:"add_on_type"`
 
 	// Config Configuration for a cluster add-on.
@@ -4826,9 +4823,6 @@ type AddOnState struct {
 
 	// SlurmWeb State for the Slurm Web add-on.
 	SlurmWeb *SlurmWebState `json:"slurm_web,omitempty"`
-
-	// Torchpass State for the Model Aware TorchPass add-on.
-	Torchpass *TorchpassState `json:"torchpass,omitempty"`
 }
 
 // AddOnUpdateRequest defines model for AddOnUpdateRequest.
@@ -5705,7 +5699,7 @@ type ChatCompletionUserMessageParamRole string
 
 // ClusterAddOnCreateRequest defines model for ClusterAddOnCreateRequest.
 type ClusterAddOnCreateRequest struct {
-	// AddOnType Type of add-on. Valid values: 'dashboard', 'ingress', 'torchpass', 'headlamp'.
+	// AddOnType Type of add-on. Valid values: 'dashboard', 'ingress', 'headlamp'.
 	AddOnType string `json:"add_on_type"`
 
 	// Config Configuration for a cluster add-on.
@@ -10422,7 +10416,7 @@ type LoRATrainingType struct {
 	// LoraR Rank of the LoRA adapter matrices.
 	LoraR int `json:"lora_r"`
 
-	// LoraTrainableModules Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.
+	// LoraTrainableModules Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models.
 	LoraTrainableModules *string `json:"lora_trainable_modules,omitempty"`
 
 	// Type Identifies this request as a LoRA fine-tune.
@@ -12583,15 +12577,6 @@ type ToolsPart struct {
 
 // TopLogprobs Top log probabilities for the tokens.
 type TopLogprobs map[string]float32
-
-// TorchpassConfig Configuration for the Model Aware TorchPass cluster add-on.
-type TorchpassConfig struct {
-	// Enabled Whether to enable the Model Aware TorchPass add-on.
-	Enabled *bool `json:"enabled,omitempty"`
-}
-
-// TorchpassState Runtime state for the Model Aware TorchPass cluster add-on.
-type TorchpassState = map[string]interface{}
 
 // TrainingMethodDPO defines model for TrainingMethodDPO.
 type TrainingMethodDPO struct {
