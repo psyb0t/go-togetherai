@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.6.0, 2026-11-10
+
+- Added the `VolumeServiceGetOrganizationModel` operation: `Client.VolumeServiceGetOrganizationModel`, `ClientWithResponses.VolumeServiceGetOrganizationModelWithResponse`, `NewVolumeServiceGetOrganizationModelRequest`, `ParseVolumeServiceGetOrganizationModelResponse` and `VolumeServiceGetOrganizationModelResponse`.
+- Breaking: `ClientInterface` and `ClientWithResponsesInterface` gained `VolumeServiceGetOrganizationModel` and `VolumeServiceGetOrganizationModelWithResponse`, so custom implementations or mocks must add the methods.
+- Added `OrderBy` to `VolumeServiceListModelsParams` and `VolumeServiceListOrganizationModelsParams`. It is sent as the `orderBy` query parameter.
+- Added `CreatedAt` and `UpdatedAt` to `DEModel`.
+
 ## v0.5.0, 2026-11-05
 
 - Development image package installation uses HTTPS and bounded retries for signed snapshot indexes and package downloads.

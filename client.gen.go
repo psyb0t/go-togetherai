@@ -7375,6 +7375,9 @@ type DEModel struct {
 	// BaseModelId ID of the supported or custom base model from which this model was derived.
 	BaseModelId *string `json:"baseModelId,omitempty"`
 
+	// CreatedAt Output only. Timestamp when the model was created.
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+
 	// Description Human-readable description of the model and its intended use.
 	Description *string `json:"description,omitempty"`
 
@@ -7389,6 +7392,9 @@ type DEModel struct {
 
 	// ProjectId ID of the project that owns the model.
 	ProjectId string `json:"projectId"`
+
+	// UpdatedAt Output only. Timestamp when the model was last updated.
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 
 	// Visibility Who can discover the model. `VISIBILITY_PRIVATE` restricts it to the project; `VISIBILITY_INTERNAL` shares it with the organization.
 	Visibility DEModelVisibility `json:"visibility"`
@@ -13604,8 +13610,9 @@ type EndpointServiceListOrganizationEndpointsParams struct {
 
 // VolumeServiceListOrganizationModelsParams defines parameters for VolumeServiceListOrganizationModels.
 type VolumeServiceListOrganizationModelsParams struct {
-	Limit *int    `form:"limit,omitempty" json:"limit,omitempty"`
-	After *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit   *int    `form:"limit,omitempty" json:"limit,omitempty"`
+	After   *string `form:"after,omitempty" json:"after,omitempty"`
+	OrderBy *string `form:"orderBy,omitempty" json:"orderBy,omitempty"`
 }
 
 // ConfigServiceListProjectConfigsParams defines parameters for ConfigServiceListProjectConfigs.
@@ -13766,6 +13773,7 @@ type VolumeServiceListModelsParams struct {
 	OrganizationId *string                                  `form:"organizationId,omitempty" json:"organizationId,omitempty"`
 	Limit          *int                                     `form:"limit,omitempty" json:"limit,omitempty"`
 	After          *string                                  `form:"after,omitempty" json:"after,omitempty"`
+	OrderBy        *string                                  `form:"orderBy,omitempty" json:"orderBy,omitempty"`
 }
 
 // VolumeServiceListModelsParamsVisibility defines parameters for VolumeServiceListModels.
@@ -20751,6 +20759,13 @@ type ClientInterface interface {
 	// Corresponds with GET /v2/organizations/{organizationId}/models (the `VolumeServiceListOrganizationModels` operationId).
 	VolumeServiceListOrganizationModels(ctx context.Context, organizationId string, params *VolumeServiceListOrganizationModelsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// VolumeServiceGetOrganizationModel Get organization model
+	//
+	// Retrieves a custom model shared with every project in the specified organization, regardless of which project owns it. Returns not found if the model belongs to another organization or is not organization-scoped.
+	//
+	// Corresponds with GET /v2/organizations/{organizationId}/models/{modelId} (the `VolumeServiceGetOrganizationModel` operationId).
+	VolumeServiceGetOrganizationModel(ctx context.Context, organizationId string, modelId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ConfigServiceListProjectConfigs List model configurations
 	//
 	// Lists production-ready configuration revisions compatible with a reference model. Specify the model with `referenceModel` or the deprecated `referenceModelId`; if both are supplied, they must identify the same model. Results include public configurations and configurations owned by the specified project.
@@ -24723,6 +24738,23 @@ func (c *Client) EndpointServiceListOrganizationEndpoints(ctx context.Context, o
 // Corresponds with GET /v2/organizations/{organizationId}/models (the `VolumeServiceListOrganizationModels` operationId).
 func (c *Client) VolumeServiceListOrganizationModels(ctx context.Context, organizationId string, params *VolumeServiceListOrganizationModelsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewVolumeServiceListOrganizationModelsRequest(c.Server, organizationId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// VolumeServiceGetOrganizationModel Get organization model
+//
+// Retrieves a custom model shared with every project in the specified organization, regardless of which project owns it. Returns not found if the model belongs to another organization or is not organization-scoped.
+//
+// Corresponds with GET /v2/organizations/{organizationId}/models/{modelId} (the `VolumeServiceGetOrganizationModel` operationId).
+func (c *Client) VolumeServiceGetOrganizationModel(ctx context.Context, organizationId string, modelId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewVolumeServiceGetOrganizationModelRequest(c.Server, organizationId, modelId)
 	if err != nil {
 		return nil, err
 	}
@@ -32232,10 +32264,63 @@ func NewVolumeServiceListOrganizationModelsRequest(server string, organizationId
 
 		}
 
+		if params.OrderBy != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "orderBy", *params.OrderBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if encoded := queryValues.Encode(); encoded != "" {
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
 		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewVolumeServiceGetOrganizationModelRequest constructs an http.Request for the VolumeServiceGetOrganizationModel method
+func NewVolumeServiceGetOrganizationModelRequest(server string, organizationId string, modelId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "organizationId", organizationId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "modelId", modelId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v2/organizations/%s/models/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
 	}
 
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
@@ -35515,6 +35600,18 @@ func NewVolumeServiceListModelsRequest(server string, projectId string, params *
 
 		}
 
+		if params.OrderBy != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "orderBy", *params.OrderBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if encoded := queryValues.Encode(); encoded != "" {
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
@@ -38456,6 +38553,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /v2/organizations/{organizationId}/models (the `VolumeServiceListOrganizationModels` operationId).
 	VolumeServiceListOrganizationModelsWithResponse(ctx context.Context, organizationId string, params *VolumeServiceListOrganizationModelsParams, reqEditors ...RequestEditorFn) (*VolumeServiceListOrganizationModelsResponse, error)
+
+	// VolumeServiceGetOrganizationModelWithResponse Get organization model
+	//
+	// Retrieves a custom model shared with every project in the specified organization, regardless of which project owns it. Returns not found if the model belongs to another organization or is not organization-scoped.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /v2/organizations/{organizationId}/models/{modelId} (the `VolumeServiceGetOrganizationModel` operationId).
+	VolumeServiceGetOrganizationModelWithResponse(ctx context.Context, organizationId string, modelId string, reqEditors ...RequestEditorFn) (*VolumeServiceGetOrganizationModelResponse, error)
 
 	// ConfigServiceListProjectConfigsWithResponse List model configurations
 	//
@@ -45913,6 +46019,54 @@ func (r VolumeServiceListOrganizationModelsResponse) ContentType() string {
 	return ""
 }
 
+type VolumeServiceGetOrganizationModelResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *DEModel
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorData
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r VolumeServiceGetOrganizationModelResponse) GetJSON200() *DEModel {
+	return r.JSON200
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r VolumeServiceGetOrganizationModelResponse) GetJSONDefault() *ErrorData {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r VolumeServiceGetOrganizationModelResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r VolumeServiceGetOrganizationModelResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r VolumeServiceGetOrganizationModelResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r VolumeServiceGetOrganizationModelResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type ConfigServiceListProjectConfigsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -51969,6 +52123,21 @@ func (c *ClientWithResponses) VolumeServiceListOrganizationModelsWithResponse(ct
 	return ParseVolumeServiceListOrganizationModelsResponse(rsp)
 }
 
+// VolumeServiceGetOrganizationModelWithResponse Get organization model
+//
+// Retrieves a custom model shared with every project in the specified organization, regardless of which project owns it. Returns not found if the model belongs to another organization or is not organization-scoped.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /v2/organizations/{organizationId}/models/{modelId} (the `VolumeServiceGetOrganizationModel` operationId).
+func (c *ClientWithResponses) VolumeServiceGetOrganizationModelWithResponse(ctx context.Context, organizationId string, modelId string, reqEditors ...RequestEditorFn) (*VolumeServiceGetOrganizationModelResponse, error) {
+	rsp, err := c.VolumeServiceGetOrganizationModel(ctx, organizationId, modelId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseVolumeServiceGetOrganizationModelResponse(rsp)
+}
+
 // ConfigServiceListProjectConfigsWithResponse List model configurations
 //
 // Lists production-ready configuration revisions compatible with a reference model. Specify the model with `referenceModel` or the deprecated `referenceModelId`; if both are supplied, they must identify the same model. Results include public configurations and configurations owned by the specified project.
@@ -58017,6 +58186,39 @@ func ParseVolumeServiceListOrganizationModelsResponse(rsp *http.Response) (*Volu
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest DEListModelsResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorData
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseVolumeServiceGetOrganizationModelResponse parses an HTTP response from a VolumeServiceGetOrganizationModelWithResponse call
+func ParseVolumeServiceGetOrganizationModelResponse(rsp *http.Response) (*VolumeServiceGetOrganizationModelResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &VolumeServiceGetOrganizationModelResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest DEModel
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
