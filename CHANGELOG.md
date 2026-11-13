@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.7.0, 2026-11-13
+
+- Breaking: the upstream spec replaced the `GB200_SXM` GPU type with `GB200_NVL`. Removed `GPUClusterCreateRequestCommonGpuTypeGB200SXM`, `GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM`, `GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM` and `GPUClusterInfoGpuTypeGB200SXM`. Added `GPUClusterCreateRequestCommonGpuTypeGB200NVL`, `GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200NVL`, `GPUClusterCreateRequestNvidiaVersionGpuTypeGB200NVL` and `GPUClusterInfoGpuTypeGB200NVL`.
+- Added the `EstimateRollout` operation: `Client.EstimateRollout`, `Client.EstimateRolloutWithBody`, `ClientWithResponses.EstimateRolloutWithResponse` and `ClientWithResponses.EstimateRolloutWithBodyWithResponse`, plus `NewEstimateRolloutRequest`, `NewEstimateRolloutRequestWithBody`, `ParseEstimateRolloutResponse`, `EstimateRolloutJSONRequestBody`, `EstimateRolloutResponse`, `RLEstimateRolloutRequest` and `RLEstimateRolloutResponse`.
+- Breaking: `ClientInterface` and `ClientWithResponsesInterface` gained the four new `EstimateRollout` methods, so custom implementations or mocks must add them.
+- Added `MaxSurge` and `MaxUnavailable` to `DECreateRolloutRequest` and `DERollout`, and the `DERolloutConditionCategoryROLLOUTFAILURECATEGORYSURGEBUDGET` constant.
+- Added `NumTrainerReplicas` to `RLComputeConfig` and `RLComputeConfigCreateRequest`.
+- The module now requires Go 1.26.11 instead of 1.26.10. The development image and the setup reference in the agent skill use the same version.
+
 ## v0.6.0, 2026-11-10
 
 - Added the `VolumeServiceGetOrganizationModel` operation: `Client.VolumeServiceGetOrganizationModel`, `ClientWithResponses.VolumeServiceGetOrganizationModelWithResponse`, `NewVolumeServiceGetOrganizationModelRequest`, `ParseVolumeServiceGetOrganizationModelResponse` and `VolumeServiceGetOrganizationModelResponse`.

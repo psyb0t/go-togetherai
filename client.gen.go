@@ -1556,6 +1556,7 @@ const (
 	DERolloutConditionCategoryROLLOUTFAILURECATEGORYPOLICYINFEASIBLE   DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_POLICY_INFEASIBLE"
 	DERolloutConditionCategoryROLLOUTFAILURECATEGORYROUTINGERROR       DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_ROUTING_ERROR"
 	DERolloutConditionCategoryROLLOUTFAILURECATEGORYSOURCENOTDRAINED   DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_SOURCE_NOT_DRAINED"
+	DERolloutConditionCategoryROLLOUTFAILURECATEGORYSURGEBUDGET        DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_SURGE_BUDGET"
 	DERolloutConditionCategoryROLLOUTFAILURECATEGORYTARGETNOTREADY     DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_TARGET_NOT_READY"
 	DERolloutConditionCategoryROLLOUTFAILURECATEGORYUNDERSERVED        DERolloutConditionCategory = "ROLLOUT_FAILURE_CATEGORY_UNDER_SERVED"
 )
@@ -1584,6 +1585,8 @@ func (e DERolloutConditionCategory) Valid() bool {
 	case DERolloutConditionCategoryROLLOUTFAILURECATEGORYROUTINGERROR:
 		return true
 	case DERolloutConditionCategoryROLLOUTFAILURECATEGORYSOURCENOTDRAINED:
+		return true
+	case DERolloutConditionCategoryROLLOUTFAILURECATEGORYSURGEBUDGET:
 		return true
 	case DERolloutConditionCategoryROLLOUTFAILURECATEGORYTARGETNOTREADY:
 		return true
@@ -2624,7 +2627,7 @@ func (e GPUClusterCreateRequestCommonClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestCommonGpuTypeB200SXM    GPUClusterCreateRequestCommonGpuType = "B200_SXM"
 	GPUClusterCreateRequestCommonGpuTypeB300SXM    GPUClusterCreateRequestCommonGpuType = "B300_SXM"
-	GPUClusterCreateRequestCommonGpuTypeGB200SXM   GPUClusterCreateRequestCommonGpuType = "GB200_SXM"
+	GPUClusterCreateRequestCommonGpuTypeGB200NVL   GPUClusterCreateRequestCommonGpuType = "GB200_NVL"
 	GPUClusterCreateRequestCommonGpuTypeH100SXM    GPUClusterCreateRequestCommonGpuType = "H100_SXM"
 	GPUClusterCreateRequestCommonGpuTypeH100SXMINF GPUClusterCreateRequestCommonGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestCommonGpuTypeH200SXM    GPUClusterCreateRequestCommonGpuType = "H200_SXM"
@@ -2639,7 +2642,7 @@ func (e GPUClusterCreateRequestCommonGpuType) Valid() bool {
 		return true
 	case GPUClusterCreateRequestCommonGpuTypeB300SXM:
 		return true
-	case GPUClusterCreateRequestCommonGpuTypeGB200SXM:
+	case GPUClusterCreateRequestCommonGpuTypeGB200NVL:
 		return true
 	case GPUClusterCreateRequestCommonGpuTypeH100SXM:
 		return true
@@ -2699,7 +2702,7 @@ func (e GPUClusterCreateRequestLegacyNvidiaClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeB200SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "B200_SXM"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeB300SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "B300_SXM"
-	GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM   GPUClusterCreateRequestLegacyNvidiaGpuType = "GB200_SXM"
+	GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200NVL   GPUClusterCreateRequestLegacyNvidiaGpuType = "GB200_NVL"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "H100_SXM"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXMINF GPUClusterCreateRequestLegacyNvidiaGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestLegacyNvidiaGpuTypeH200SXM    GPUClusterCreateRequestLegacyNvidiaGpuType = "H200_SXM"
@@ -2714,7 +2717,7 @@ func (e GPUClusterCreateRequestLegacyNvidiaGpuType) Valid() bool {
 		return true
 	case GPUClusterCreateRequestLegacyNvidiaGpuTypeB300SXM:
 		return true
-	case GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM:
+	case GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200NVL:
 		return true
 	case GPUClusterCreateRequestLegacyNvidiaGpuTypeH100SXM:
 		return true
@@ -2774,7 +2777,7 @@ func (e GPUClusterCreateRequestNvidiaVersionClusterType) Valid() bool {
 const (
 	GPUClusterCreateRequestNvidiaVersionGpuTypeB200SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "B200_SXM"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeB300SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "B300_SXM"
-	GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM   GPUClusterCreateRequestNvidiaVersionGpuType = "GB200_SXM"
+	GPUClusterCreateRequestNvidiaVersionGpuTypeGB200NVL   GPUClusterCreateRequestNvidiaVersionGpuType = "GB200_NVL"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "H100_SXM"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXMINF GPUClusterCreateRequestNvidiaVersionGpuType = "H100_SXM_INF"
 	GPUClusterCreateRequestNvidiaVersionGpuTypeH200SXM    GPUClusterCreateRequestNvidiaVersionGpuType = "H200_SXM"
@@ -2789,7 +2792,7 @@ func (e GPUClusterCreateRequestNvidiaVersionGpuType) Valid() bool {
 		return true
 	case GPUClusterCreateRequestNvidiaVersionGpuTypeB300SXM:
 		return true
-	case GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM:
+	case GPUClusterCreateRequestNvidiaVersionGpuTypeGB200NVL:
 		return true
 	case GPUClusterCreateRequestNvidiaVersionGpuTypeH100SXM:
 		return true
@@ -2831,7 +2834,7 @@ func (e GPUClusterInfoBillingType) Valid() bool {
 const (
 	GPUClusterInfoGpuTypeB200SXM    GPUClusterInfoGpuType = "B200_SXM"
 	GPUClusterInfoGpuTypeB300SXM    GPUClusterInfoGpuType = "B300_SXM"
-	GPUClusterInfoGpuTypeGB200SXM   GPUClusterInfoGpuType = "GB200_SXM"
+	GPUClusterInfoGpuTypeGB200NVL   GPUClusterInfoGpuType = "GB200_NVL"
 	GPUClusterInfoGpuTypeH100SXM    GPUClusterInfoGpuType = "H100_SXM"
 	GPUClusterInfoGpuTypeH100SXMINF GPUClusterInfoGpuType = "H100_SXM_INF"
 	GPUClusterInfoGpuTypeH200SXM    GPUClusterInfoGpuType = "H200_SXM"
@@ -2846,7 +2849,7 @@ func (e GPUClusterInfoGpuType) Valid() bool {
 		return true
 	case GPUClusterInfoGpuTypeB300SXM:
 		return true
-	case GPUClusterInfoGpuTypeGB200SXM:
+	case GPUClusterInfoGpuTypeGB200NVL:
 		return true
 	case GPUClusterInfoGpuTypeH100SXM:
 		return true
@@ -6440,8 +6443,14 @@ type DECreateRolloutRequest struct {
 	// FinalSourceReplicas Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source.
 	FinalSourceReplicas *int `json:"finalSourceReplicas,omitempty"`
 
-	// FinalTargetReplicas Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment's replica count at create time, or to the source and target deployments' combined replica count when both already stand in the endpoint traffic split after a cancel. The completed target's autoscaling max lands at the landing ceiling, max(this value, the source max, the target's own max); the rollout may lift the target max at first wake, at the first step that needs it, or at completion unless an operator changes max mid-run. The lifted ceiling remains after completion, and PreviewRolloutDefaults reports a coming lift as ROLLOUT_WILL_RAISE_TARGET_MAX. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN.
+	// FinalTargetReplicas Optional target replica floor at completion. For rolling, the ladder climbs to this count one replica per rung. Must be at least 1 when set; defaults to the source deployment's replica count at create time, or to the source and target deployments' combined replica count when both already stand in the endpoint traffic split after a cancel. The completed target's autoscaling max lands at the landing ceiling, max(this value, the source max, the target's own max); the rollout may lift the target max at first wake, at the first step that needs it, or at completion unless an operator changes max mid-run. The lifted ceiling remains after completion, and PreviewRolloutDefaults reports a coming lift as ROLLOUT_WILL_RAISE_TARGET_MAX. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN.
 	FinalTargetReplicas *int `json:"finalTargetReplicas,omitempty"`
+
+	// MaxSurge Optional maximum target replicas one canary step may add. No canary step raises the target required replica count by more than this over the previous step (the target's current count before the first). Canary steps are admitted only when every raise fits. A rejection names the step, the counts, and the smallest maxSurge that admits the plan. Autoscaler growth on either deployment is not counted against the bound. Must be between 1 and 1000 when set. When unset, no step-raise bound applies. Available on the canary strategy only for now; a rolling or blue-green rollout that sets it is rejected at create and preview.
+	MaxSurge *int `json:"maxSurge,omitempty"`
+
+	// MaxUnavailable Count of source replicas that may be missing or retired ahead of their replacements at any one time. Defaults to 0, so the rollout waits for capacity and refuses a degraded source. Spent three ways. A source already degraded at create (ready below desired by at most this many) is admitted. The engine retires source replicas ahead of a target raise to stay under maxSurge. When the target cannot be placed, it retires source replicas to make room, and only when both legs use the same GPU type; a target that cannot be placed on the source's cluster gains nothing from the retire, and the rollout then pauses naming it. It is a concurrent bound measured against the source's routed-share need, which drops after every traffic shift, so a full cluster is walked rung by rung. The last source replica is never retired before traffic moves, except at the final 100% rung, where the allowance may stop the source before the target's last replicas are ready. A 1-replica source with maxUnavailable 1 on a full cluster serves nothing while the replacement starts.
+	MaxUnavailable *int `json:"maxUnavailable,omitempty"`
 
 	// Metrics Optional metric gates evaluated after each step's soak. Canary only; rejected on rolling and blue-green rollouts.
 	Metrics *[]DEMetricRule `json:"metrics,omitempty"`
@@ -7717,7 +7726,7 @@ type DERevisionValidationError struct {
 	Severity *string `json:"severity,omitempty"`
 }
 
-// DERollingConfig Rolling strategy configuration for small batches that ramp target replicas up while shrinking source replicas to what their remaining traffic share needs.
+// DERollingConfig Rolling strategy configuration. The target ramps up one replica per rung while the source shrinks to what its remaining traffic share needs.
 type DERollingConfig = map[string]interface{}
 
 // DERollout Public view of a rollout resource, including runtime progress and any pause or abort reason.
@@ -7742,6 +7751,12 @@ type DERollout struct {
 
 	// Id Output only. Unique rollout identifier.
 	Id *string `json:"id,omitempty"`
+
+	// MaxSurge Output only. The maxSurge the rollout was created with. Absent when it was not set.
+	MaxSurge *int `json:"maxSurge,omitempty"`
+
+	// MaxUnavailable The maxUnavailable the rollout was created with. Absent when it was not set.
+	MaxUnavailable *int `json:"maxUnavailable,omitempty"`
 
 	// PauseInfo Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED) and cleared after resume or abort; while PAUSING, pausedAt records when the pause was requested.
 	PauseInfo *DEPauseInfo `json:"pauseInfo,omitempty"`
@@ -11012,6 +11027,9 @@ type RLComputeConfig struct {
 
 	// NumGeneratorReplicas Number of generator replicas. 0 means the resource runs the trainer only, with no generator.
 	NumGeneratorReplicas int32 `json:"num_generator_replicas"`
+
+	// NumTrainerReplicas Number of trainers: 0 for sampling only, or 1 for training. Each trainer can use multiple GPUs.
+	NumTrainerReplicas int32 `json:"num_trainer_replicas"`
 }
 
 // RLComputeConfigGpuType GPU type selected for this resource.
@@ -11024,6 +11042,9 @@ type RLComputeConfigCreateRequest struct {
 
 	// NumGeneratorReplicas Number of generator replicas. 0 runs the trainer only, with no generator.
 	NumGeneratorReplicas *int32 `json:"num_generator_replicas,omitempty"`
+
+	// NumTrainerReplicas Number of trainers: 0 or 1. Omit to use 1. Each trainer can use multiple GPUs. With 0, at least one generator replica is required, optimizer_config is not allowed, and sessions must resume from an inference checkpoint for sampling only.
+	NumTrainerReplicas *int32 `json:"num_trainer_replicas,omitempty"`
 }
 
 // RLComputeConfigCreateRequestGpuType GPU type to provision. Omit to use the model's default GPU type.
@@ -11112,6 +11133,109 @@ type RLEncodedTextChunkTokens1 = int
 
 // RLEncodedTextChunk_Tokens_Item defines model for RL.EncodedTextChunk.tokens.Item.
 type RLEncodedTextChunk_Tokens_Item struct {
+	union json.RawMessage
+}
+
+// RLEstimateRolloutRequest Episode shape, model, GPU type, and concurrency for a rollout-only estimate
+type RLEstimateRolloutRequest struct {
+	// AddedTokensPerTurn Tokens added before each later turn (K), including the prior generated tokens followed by environment tokens. Must be at least generated_tokens_per_turn.
+	AddedTokensPerTurn int `json:"added_tokens_per_turn"`
+
+	// BaseModel Base model to estimate. The model, GPU type, and training mode must support rollout estimates.
+	BaseModel string `json:"base_model"`
+
+	// ComputeConfig Compute layout to estimate, as for a model resource. Omitted fields use the model's default GPU type and one generator replica (D); num_generator_replicas must be positive.
+	ComputeConfig *RLComputeConfigCreateRequest `json:"compute_config,omitempty"`
+
+	// Concurrency Maximum concurrent episodes across all generator replicas (B). Must be positive.
+	Concurrency int `json:"concurrency"`
+
+	// DistinctPromptsPerReplica Number of distinct initial prompts among the concurrent episodes of one replica (Q). When episodes_per_prompt is given, defaults to ceil(concurrent episodes / G). Otherwise defaults to 1 when shared_prefix_tokens equals prompt_tokens, and to the concurrent episodes per replica when it does not. Must be 1 when shared_prefix_tokens equals prompt_tokens.
+	DistinctPromptsPerReplica *int `json:"distinct_prompts_per_replica,omitempty"`
+
+	// Episodes Total number of episodes (N). Must be between 1 and 10000000.
+	Episodes int `json:"episodes"`
+
+	// EpisodesPerPrompt Maximum sibling episodes per initial prompt (G). When distinct_prompts_per_replica is given, defaults to ceil(concurrent episodes / Q). Otherwise defaults to the concurrent episodes per replica when shared_prefix_tokens equals prompt_tokens, and to 1 when it does not. When shared_prefix_tokens equals prompt_tokens, must be at least the concurrent episodes per replica.
+	EpisodesPerPrompt *int `json:"episodes_per_prompt,omitempty"`
+
+	// GeneratedTokensPerTurn Tokens generated on each turn (O). Must be positive.
+	GeneratedTokensPerTurn int `json:"generated_tokens_per_turn"`
+
+	// LoraEnabled Whether to estimate a resource that hosts LoRA sessions (true, default) or a single full-weight session (false), as in a model resource. The model and GPU type must support rollout estimates in this mode.
+	LoraEnabled *bool `json:"lora_enabled,omitempty"`
+
+	// PromptTokens Initial prompt tokens per episode (P). Must be positive.
+	PromptTokens int `json:"prompt_tokens"`
+
+	// SharedPrefixTokens Leading tokens shared by all distinct initial prompts (H). Defaults to 0; cannot exceed prompt_tokens.
+	SharedPrefixTokens *int `json:"shared_prefix_tokens,omitempty"`
+
+	// Turns Assistant turns per episode (T). Must be between 1 and 1024.
+	Turns int `json:"turns"`
+}
+
+// RLEstimateRolloutResponse Estimated rollout elapsed time, tokens, throughput, GPU-hours, and price
+type RLEstimateRolloutResponse struct {
+	// AllocatedGpuHours Generator GPUs across all replicas times wall time, in GPU-hours.
+	AllocatedGpuHours float64 `json:"allocated_gpu_hours"`
+
+	// BilledGpuHours GPUs of the whole model resource, trainer and generator, times wall time, in GPU-hours. A model resource is billed for all of its GPUs while the rollouts run. An approximation measured on single-wave rollouts (concurrency equal to episodes) of up to four turns on one generator replica: actual usage can be up to about 45% higher when episodes share a prompt, and about 20% higher or lower otherwise. Longer multi-turn rollouts with distinct prompts can take longer than estimated.
+	BilledGpuHours float64 `json:"billed_gpu_hours"`
+
+	// Currency Currency of estimated_price.
+	Currency string `json:"currency"`
+
+	// EffectiveDecodeTokensPerSecond generated_tokens divided by wall_seconds.
+	EffectiveDecodeTokensPerSecond float64 `json:"effective_decode_tokens_per_second"`
+
+	// EffectiveDistinctPromptsPerReplica Effective distinct_prompts_per_replica (Q) for the largest concurrent batch of one replica.
+	EffectiveDistinctPromptsPerReplica int `json:"effective_distinct_prompts_per_replica"`
+
+	// EffectiveEpisodesPerPrompt Effective episodes_per_prompt (G) for the largest concurrent batch of one replica.
+	EffectiveEpisodesPerPrompt int `json:"effective_episodes_per_prompt"`
+
+	// EffectivePrefillTokensPerSecond submitted_prompt_tokens divided by wall_seconds, counting prompt tokens served from the prompt cache.
+	EffectivePrefillTokensPerSecond float64 `json:"effective_prefill_tokens_per_second"`
+
+	// EffectiveSharedPrefixTokens Effective shared_prefix_tokens (H).
+	EffectiveSharedPrefixTokens int `json:"effective_shared_prefix_tokens"`
+
+	// EstimatedPrice Estimated on-demand price of the rollouts: billed_gpu_hours times the GPU type's list price per GPU-hour, the rate the model resource cost estimate uses. An approximation that inherits the uncertainty of billed_gpu_hours; it is not a quote.
+	EstimatedPrice float64 `json:"estimated_price"`
+
+	// GeneratedTokens Generated output tokens across all turns. JSON encodes this count as a decimal string.
+	GeneratedTokens RLEstimateRolloutResponse_GeneratedTokens `json:"generated_tokens"`
+
+	// LoraEnabled Whether the estimate is for a LoRA resource (true) or a full-weight resource (false).
+	LoraEnabled bool `json:"lora_enabled"`
+
+	// SubmittedPromptTokens Prompt tokens submitted across all turns. JSON encodes this count as a decimal string.
+	SubmittedPromptTokens RLEstimateRolloutResponse_SubmittedPromptTokens `json:"submitted_prompt_tokens"`
+
+	// WallSeconds Estimated time until all rollout episodes finish, in seconds.
+	WallSeconds float64 `json:"wall_seconds"`
+}
+
+// RLEstimateRolloutResponseGeneratedTokens0 defines model for RLEstimateRolloutResponse.GeneratedTokens.0.
+type RLEstimateRolloutResponseGeneratedTokens0 = string
+
+// RLEstimateRolloutResponseGeneratedTokens1 defines model for RLEstimateRolloutResponse.GeneratedTokens.1.
+type RLEstimateRolloutResponseGeneratedTokens1 = int
+
+// RLEstimateRolloutResponse_GeneratedTokens Generated output tokens across all turns. JSON encodes this count as a decimal string.
+type RLEstimateRolloutResponse_GeneratedTokens struct {
+	union json.RawMessage
+}
+
+// RLEstimateRolloutResponseSubmittedPromptTokens0 defines model for RLEstimateRolloutResponse.SubmittedPromptTokens.0.
+type RLEstimateRolloutResponseSubmittedPromptTokens0 = string
+
+// RLEstimateRolloutResponseSubmittedPromptTokens1 defines model for RLEstimateRolloutResponse.SubmittedPromptTokens.1.
+type RLEstimateRolloutResponseSubmittedPromptTokens1 = int
+
+// RLEstimateRolloutResponse_SubmittedPromptTokens Prompt tokens submitted across all turns. JSON encodes this count as a decimal string.
+type RLEstimateRolloutResponse_SubmittedPromptTokens struct {
 	union json.RawMessage
 }
 
@@ -11393,7 +11517,7 @@ type RLModelResources struct {
 	// LoraEnabled Whether the resource hosts LoRA sessions or a full-weight session
 	LoraEnabled bool `json:"lora_enabled"`
 
-	// OptimizerConfig Optimizer configuration for this resource.
+	// OptimizerConfig Optimizer configuration for this resource. Unused for generator-only resources.
 	OptimizerConfig RLOptimizerConfig `json:"optimizer_config"`
 
 	// Status Lifecycle status of the model resource
@@ -11753,7 +11877,7 @@ type RLStartTrainingSessionRequest struct {
 	// LoadOptimizer Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference checkpoints, which have no optimizer state.
 	LoadOptimizer *bool `json:"load_optimizer,omitempty"`
 
-	// LoraConfig LoRA adapter configuration for the session
+	// LoraConfig LoRA adapter configuration for the session. Omit for generator-only resources, which use the checkpoint's LoRA settings.
 	LoraConfig *RLLoraConfig `json:"lora_config,omitempty"`
 
 	// Metadata Optional auxiliary metadata to associate with the training session
@@ -11762,7 +11886,7 @@ type RLStartTrainingSessionRequest struct {
 	// ModelResourcesId ID of the model resource to use for this training session.
 	ModelResourcesId string `json:"model_resources_id"`
 
-	// ResumeFromCheckpointId Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.
+	// ResumeFromCheckpointId Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model. Required for generator-only resources, which accept inference checkpoints only.
 	ResumeFromCheckpointId *string `json:"resume_from_checkpoint_id,omitempty"`
 }
 
@@ -13942,6 +14066,9 @@ type EstimateModelResourcesCostJSONRequestBody = RLCreateModelResourcesRequest
 // ExtendModelResourcesExpiryJSONRequestBody defines body for ExtendModelResourcesExpiry for application/json ContentType.
 type ExtendModelResourcesExpiryJSONRequestBody = RLExtendModelResourcesExpiryRequest
 
+// EstimateRolloutJSONRequestBody defines body for EstimateRollout for application/json ContentType.
+type EstimateRolloutJSONRequestBody = RLEstimateRolloutRequest
+
 // StartTrainingSessionJSONRequestBody defines body for StartTrainingSession for application/json ContentType.
 type StartTrainingSessionJSONRequestBody = RLStartTrainingSessionRequest
 
@@ -15390,6 +15517,20 @@ func (t DECreateRolloutRequest) MarshalJSON() ([]byte, error) {
 		}
 	}
 
+	if t.MaxSurge != nil {
+		object["maxSurge"], err = json.Marshal(t.MaxSurge)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'maxSurge': %w", err)
+		}
+	}
+
+	if t.MaxUnavailable != nil {
+		object["maxUnavailable"], err = json.Marshal(t.MaxUnavailable)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'maxUnavailable': %w", err)
+		}
+	}
+
 	if t.Metrics != nil {
 		object["metrics"], err = json.Marshal(t.Metrics)
 		if err != nil {
@@ -15454,6 +15595,20 @@ func (t *DECreateRolloutRequest) UnmarshalJSON(b []byte) error {
 		err = json.Unmarshal(raw, &t.FinalTargetReplicas)
 		if err != nil {
 			return fmt.Errorf("error reading 'finalTargetReplicas': %w", err)
+		}
+	}
+
+	if raw, found := object["maxSurge"]; found {
+		err = json.Unmarshal(raw, &t.MaxSurge)
+		if err != nil {
+			return fmt.Errorf("error reading 'maxSurge': %w", err)
+		}
+	}
+
+	if raw, found := object["maxUnavailable"]; found {
+		err = json.Unmarshal(raw, &t.MaxUnavailable)
+		if err != nil {
+			return fmt.Errorf("error reading 'maxUnavailable': %w", err)
 		}
 	}
 
@@ -17256,6 +17411,130 @@ func (t RLEncodedTextChunk_Tokens_Item) MarshalJSON() ([]byte, error) {
 }
 
 func (t *RLEncodedTextChunk_Tokens_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsRLEstimateRolloutResponseGeneratedTokens0 returns the union data inside the RLEstimateRolloutResponse_GeneratedTokens as a RLEstimateRolloutResponseGeneratedTokens0
+func (t RLEstimateRolloutResponse_GeneratedTokens) AsRLEstimateRolloutResponseGeneratedTokens0() (RLEstimateRolloutResponseGeneratedTokens0, error) {
+	var body RLEstimateRolloutResponseGeneratedTokens0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromRLEstimateRolloutResponseGeneratedTokens0 overwrites any union data inside the RLEstimateRolloutResponse_GeneratedTokens as the provided RLEstimateRolloutResponseGeneratedTokens0
+func (t *RLEstimateRolloutResponse_GeneratedTokens) FromRLEstimateRolloutResponseGeneratedTokens0(v RLEstimateRolloutResponseGeneratedTokens0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeRLEstimateRolloutResponseGeneratedTokens0 performs a merge with any union data inside the RLEstimateRolloutResponse_GeneratedTokens, using the provided RLEstimateRolloutResponseGeneratedTokens0
+func (t *RLEstimateRolloutResponse_GeneratedTokens) MergeRLEstimateRolloutResponseGeneratedTokens0(v RLEstimateRolloutResponseGeneratedTokens0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsRLEstimateRolloutResponseGeneratedTokens1 returns the union data inside the RLEstimateRolloutResponse_GeneratedTokens as a RLEstimateRolloutResponseGeneratedTokens1
+func (t RLEstimateRolloutResponse_GeneratedTokens) AsRLEstimateRolloutResponseGeneratedTokens1() (RLEstimateRolloutResponseGeneratedTokens1, error) {
+	var body RLEstimateRolloutResponseGeneratedTokens1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromRLEstimateRolloutResponseGeneratedTokens1 overwrites any union data inside the RLEstimateRolloutResponse_GeneratedTokens as the provided RLEstimateRolloutResponseGeneratedTokens1
+func (t *RLEstimateRolloutResponse_GeneratedTokens) FromRLEstimateRolloutResponseGeneratedTokens1(v RLEstimateRolloutResponseGeneratedTokens1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeRLEstimateRolloutResponseGeneratedTokens1 performs a merge with any union data inside the RLEstimateRolloutResponse_GeneratedTokens, using the provided RLEstimateRolloutResponseGeneratedTokens1
+func (t *RLEstimateRolloutResponse_GeneratedTokens) MergeRLEstimateRolloutResponseGeneratedTokens1(v RLEstimateRolloutResponseGeneratedTokens1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t RLEstimateRolloutResponse_GeneratedTokens) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *RLEstimateRolloutResponse_GeneratedTokens) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsRLEstimateRolloutResponseSubmittedPromptTokens0 returns the union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens as a RLEstimateRolloutResponseSubmittedPromptTokens0
+func (t RLEstimateRolloutResponse_SubmittedPromptTokens) AsRLEstimateRolloutResponseSubmittedPromptTokens0() (RLEstimateRolloutResponseSubmittedPromptTokens0, error) {
+	var body RLEstimateRolloutResponseSubmittedPromptTokens0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromRLEstimateRolloutResponseSubmittedPromptTokens0 overwrites any union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens as the provided RLEstimateRolloutResponseSubmittedPromptTokens0
+func (t *RLEstimateRolloutResponse_SubmittedPromptTokens) FromRLEstimateRolloutResponseSubmittedPromptTokens0(v RLEstimateRolloutResponseSubmittedPromptTokens0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeRLEstimateRolloutResponseSubmittedPromptTokens0 performs a merge with any union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens, using the provided RLEstimateRolloutResponseSubmittedPromptTokens0
+func (t *RLEstimateRolloutResponse_SubmittedPromptTokens) MergeRLEstimateRolloutResponseSubmittedPromptTokens0(v RLEstimateRolloutResponseSubmittedPromptTokens0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsRLEstimateRolloutResponseSubmittedPromptTokens1 returns the union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens as a RLEstimateRolloutResponseSubmittedPromptTokens1
+func (t RLEstimateRolloutResponse_SubmittedPromptTokens) AsRLEstimateRolloutResponseSubmittedPromptTokens1() (RLEstimateRolloutResponseSubmittedPromptTokens1, error) {
+	var body RLEstimateRolloutResponseSubmittedPromptTokens1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromRLEstimateRolloutResponseSubmittedPromptTokens1 overwrites any union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens as the provided RLEstimateRolloutResponseSubmittedPromptTokens1
+func (t *RLEstimateRolloutResponse_SubmittedPromptTokens) FromRLEstimateRolloutResponseSubmittedPromptTokens1(v RLEstimateRolloutResponseSubmittedPromptTokens1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeRLEstimateRolloutResponseSubmittedPromptTokens1 performs a merge with any union data inside the RLEstimateRolloutResponse_SubmittedPromptTokens, using the provided RLEstimateRolloutResponseSubmittedPromptTokens1
+func (t *RLEstimateRolloutResponse_SubmittedPromptTokens) MergeRLEstimateRolloutResponseSubmittedPromptTokens1(v RLEstimateRolloutResponseSubmittedPromptTokens1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t RLEstimateRolloutResponse_SubmittedPromptTokens) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *RLEstimateRolloutResponse_SubmittedPromptTokens) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -20458,6 +20737,24 @@ type ClientInterface interface {
 	//
 	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/stop (the `StopModelResources` operationId).
 	StopModelResources(ctx context.Context, modelResourcesId string, params *StopModelResourcesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// EstimateRolloutWithBody Estimate rollout time and price
+	//
+	// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+	EstimateRolloutWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// EstimateRollout Estimate rollout time and price
+	//
+	// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+	EstimateRollout(ctx context.Context, body EstimateRolloutJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListSupportedModels List supported models
 	//
@@ -24058,6 +24355,44 @@ func (c *Client) ExtendModelResourcesExpiry(ctx context.Context, modelResourcesI
 // Corresponds with POST /v1/rl/model-resources/{model_resources_id}/stop (the `StopModelResources` operationId).
 func (c *Client) StopModelResources(ctx context.Context, modelResourcesId string, params *StopModelResourcesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewStopModelResourcesRequest(c.Server, modelResourcesId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// EstimateRolloutWithBody Estimate rollout time and price
+//
+// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+func (c *Client) EstimateRolloutWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewEstimateRolloutRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// EstimateRollout Estimate rollout time and price
+//
+// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+func (c *Client) EstimateRollout(ctx context.Context, body EstimateRolloutJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewEstimateRolloutRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -30903,6 +31238,46 @@ func NewStopModelResourcesRequest(server string, modelResourcesId string, params
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewEstimateRolloutRequest calls the generic EstimateRollout builder with application/json body
+func NewEstimateRolloutRequest(server string, body EstimateRolloutJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewEstimateRolloutRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewEstimateRolloutRequestWithBody constructs an http.Request for the EstimateRollout method, with any body, and a specified content type
+func NewEstimateRolloutRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/rl/rollouts/estimate")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -38214,6 +38589,24 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /v1/rl/model-resources/{model_resources_id}/stop (the `StopModelResources` operationId).
 	StopModelResourcesWithResponse(ctx context.Context, modelResourcesId string, params *StopModelResourcesParams, reqEditors ...RequestEditorFn) (*StopModelResourcesResponse, error)
 
+	// EstimateRolloutWithBodyWithResponse Estimate rollout time and price
+	//
+	// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+	EstimateRolloutWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*EstimateRolloutResponse, error)
+
+	// EstimateRolloutWithResponse Estimate rollout time and price
+	//
+	// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+	EstimateRolloutWithResponse(ctx context.Context, body EstimateRolloutJSONRequestBody, reqEditors ...RequestEditorFn) (*EstimateRolloutResponse, error)
+
 	// ListSupportedModelsWithResponse List supported models
 	//
 	// Returns the models supported by the RL service and their limits for training/sampling operations.
@@ -44509,6 +44902,54 @@ func (r StopModelResourcesResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r StopModelResourcesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type EstimateRolloutResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RLEstimateRolloutResponse
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorData
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r EstimateRolloutResponse) GetJSON200() *RLEstimateRolloutResponse {
+	return r.JSON200
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r EstimateRolloutResponse) GetJSONDefault() *ErrorData {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r EstimateRolloutResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r EstimateRolloutResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r EstimateRolloutResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r EstimateRolloutResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -51555,6 +51996,36 @@ func (c *ClientWithResponses) StopModelResourcesWithResponse(ctx context.Context
 	return ParseStopModelResourcesResponse(rsp)
 }
 
+// EstimateRolloutWithBodyWithResponse Estimate rollout time and price
+//
+// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+func (c *ClientWithResponses) EstimateRolloutWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*EstimateRolloutResponse, error) {
+	rsp, err := c.EstimateRolloutWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseEstimateRolloutResponse(rsp)
+}
+
+// EstimateRolloutWithResponse Estimate rollout time and price
+//
+// Estimates rollout-only time, generator GPU-hours, billed GPU-hours of the whole model resource, and price for a supported model and GPU type. Each generator replica may contain several inference servers or span multiple nodes. Assumes identical episodes, exact reuse of generated tokens between turns, turns that start together within a replica, no environment delay, and no concurrent computation of the same initial prompt. Prompt-cache reuse and capacity misses are approximate, especially for multi-turn episodes. Rates are measured in the training mode reported by lora_enabled. Cache-transfer and request-preemption delays are not included, so long multi-turn rollouts with distinct prompts can take longer than estimated.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /v1/rl/rollouts/estimate (the `EstimateRollout` operationId).
+func (c *ClientWithResponses) EstimateRolloutWithResponse(ctx context.Context, body EstimateRolloutJSONRequestBody, reqEditors ...RequestEditorFn) (*EstimateRolloutResponse, error) {
+	rsp, err := c.EstimateRollout(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseEstimateRolloutResponse(rsp)
+}
+
 // ListSupportedModelsWithResponse List supported models
 //
 // Returns the models supported by the RL service and their limits for training/sampling operations.
@@ -57117,6 +57588,39 @@ func ParseStopModelResourcesResponse(rsp *http.Response) (*StopModelResourcesRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest RLModelResources
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorData
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseEstimateRolloutResponse parses an HTTP response from a EstimateRolloutWithResponse call
+func ParseEstimateRolloutResponse(rsp *http.Response) (*EstimateRolloutResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &EstimateRolloutResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RLEstimateRolloutResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
