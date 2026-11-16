@@ -5986,8 +5986,14 @@ type CreateDeploymentRequest struct {
 	// Name Name is the unique identifier for your deployment. Must contain lowercase letters, numbers, or hyphens, start with a lowercase letter or number, and be 4-63 characters. It cannot be changed.
 	Name string `json:"name"`
 
+	// PlacementGroup PlacementGroup co-locates deployments that share this value onto one cluster, so in-cluster traffic between them stays local. A member that cannot co-locate stays pending. Leave empty for no group
+	PlacementGroup *string `json:"placement_group,omitempty"`
+
 	// Port Port is the container port your application listens on (e.g., 8080 for web servers). Required if your application serves traffic
 	Port *int `json:"port,omitempty"`
+
+	// Regions Regions confines the deployment to clusters in these regions. Each entry is an exact region or a prefix family like "us-east" that matches every "us-east-*". A deployment that cannot place in any of them stays pending. Empty means any region
+	Regions *[]string `json:"regions,omitempty"`
 
 	// Storage Storage is the amount of ephemeral disk storage to allocate per container instance (e.g., 10 = 10GiB)
 	Storage *int `json:"storage,omitempty"`
@@ -8622,11 +8628,17 @@ type DeploymentResponseItem struct {
 	// Object The object type, which is always `deployment`.
 	Object interface{} `json:"object,omitempty"`
 
+	// PlacementGroup PlacementGroup co-locates deployments that share this value onto one cluster. Empty when the deployment is not in a group
+	PlacementGroup *string `json:"placement_group,omitempty"`
+
 	// Port Port is the container port that the deployment exposes
 	Port *int `json:"port,omitempty"`
 
 	// ReadyReplicas ReadyReplicas is the current number of replicas that are in the Ready state
 	ReadyReplicas *int `json:"ready_replicas,omitempty"`
+
+	// Regions Regions confines the deployment to clusters in these regions (exact region or a prefix family like "us-east"). Empty means any region
+	Regions *[]string `json:"regions,omitempty"`
 
 	// ReplicaEvents ReplicaEvents is a mapping of replica names or IDs to their status events
 	ReplicaEvents *map[string]ReplicaEvent `json:"replica_events,omitempty"`
@@ -12498,11 +12510,17 @@ type RevisionDetailResponse struct {
 	// Object The object type, which is always `revision`.
 	Object interface{} `json:"object"`
 
+	// PlacementGroup Placement group this revision co-locates into. Empty when the revision is not in a group.
+	PlacementGroup *string `json:"placement_group,omitempty"`
+
 	// Port Container port exposed by this revision.
 	Port int `json:"port"`
 
 	// Protocol Network protocol served by the deployment revision.
 	Protocol string `json:"protocol"`
+
+	// Regions Regions this revision is confined to (exact region or a prefix family like "us-east"). Empty means any region.
+	Regions *[]string `json:"regions,omitempty"`
 
 	// RevisionId Unique revision identifier.
 	RevisionId string `json:"revision_id"`
@@ -12782,8 +12800,14 @@ type UpdateDeploymentRequest struct {
 	// Name Name is the new unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)
 	Name *string `json:"name,omitempty"`
 
+	// PlacementGroup PlacementGroup co-locates deployments that share this value onto one cluster. A member that cannot co-locate stays pending. Send an empty string to clear the group; omit to leave it unchanged
+	PlacementGroup *string `json:"placement_group,omitempty"`
+
 	// Port Port is the container port your application listens on (e.g., 8080 for web servers)
 	Port *int `json:"port,omitempty"`
+
+	// Regions Regions confines the deployment to clusters in these regions (exact region or a prefix family like "us-east"). Send an empty array to clear the region pin; omit to leave it unchanged
+	Regions *[]string `json:"regions,omitempty"`
 
 	// Storage Storage is the amount of ephemeral disk storage to allocate per container instance (e.g., 10 = 10GiB)
 	Storage *int `json:"storage,omitempty"`

@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.7.1, 2026-11-16
+
+- Added the optional `PlacementGroup` (`*string`) and `Regions` (`*[]string`) fields to `CreateDeploymentRequest`, `UpdateDeploymentRequest`, `DeploymentResponseItem` and `RevisionDetailResponse`.
+- `PlacementGroup` co-locates deployments that share a value onto one cluster. `Regions` limits a deployment to clusters in the listed regions, as exact names or prefix families such as "us-east".
+- On `UpdateDeploymentRequest`, an empty string clears `PlacementGroup` and an empty array clears `Regions`. Omitting a field leaves it unchanged.
+
 ## v0.7.0, 2026-11-13
 
 - Breaking: the upstream spec replaced the `GB200_SXM` GPU type with `GB200_NVL`. Removed `GPUClusterCreateRequestCommonGpuTypeGB200SXM`, `GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200SXM`, `GPUClusterCreateRequestNvidiaVersionGpuTypeGB200SXM` and `GPUClusterInfoGpuTypeGB200SXM`. Added `GPUClusterCreateRequestCommonGpuTypeGB200NVL`, `GPUClusterCreateRequestLegacyNvidiaGpuTypeGB200NVL`, `GPUClusterCreateRequestNvidiaVersionGpuTypeGB200NVL` and `GPUClusterInfoGpuTypeGB200NVL`.
