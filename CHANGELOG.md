@@ -2,6 +2,17 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.8.0, 2026-11-24
+
+- Breaking: the upstream spec renamed the evaluation operations and marked them deprecated. Removed `Client.CreateEvaluationJob`, `Client.CreateEvaluationJobWithBody`, `Client.GetAllEvaluationJobs`, `Client.GetEvaluationJobDetails`, `Client.GetEvaluationJobStatusAndResults` and `Client.GetModelList`, with the matching `ClientWithResponses` methods, `New...Request` builders, `Parse...Response` functions, response types, `GetAllEvaluationJobsParams`, `GetModelListParams` and `CreateEvaluationJobJSONRequestBody`.
+- Added the replacements: `Client.PostV1Evaluation`, `Client.PostV1EvaluationWithBody`, `Client.GetV1Evaluation`, `Client.GetV1EvaluationId`, `Client.GetV1EvaluationIdStatus` and `Client.GetV1EvaluationModelList`, with `ClientWithResponses` methods, request builders, parsers, `PostV1EvaluationJSONRequestBody`, `GetV1EvaluationParams` and `GetV1EvaluationModelListParams`. The status enum is now `GetV1EvaluationIdStatus200JSONResponseBodyStatus`.
+- Breaking: `ClientInterface` and `ClientWithResponsesInterface` dropped the old evaluation methods and gained the new ones, so custom implementations or mocks must change.
+- The `Evaluation*` model types are now marked deprecated and their field comments were removed.
+- Added `ModelName` and `TrafficWeight` to `CreateDeploymentRequest`, `UpdateDeploymentRequest` and `DeploymentResponseItem`.
+- Added `ServingState` and the `DEAdapterEntryServingState` enum to `DEAdapterEntry`.
+- Added `UnitPrices` to `DESupportedModel`, with `DESupportedModelUnitPrice`, `DESupportedModelUnitPriceTier` and `DESupportedModelUnitPriceUnit`.
+- Added `EstimatedDoneAt` to `VideoJob`.
+
 ## v0.7.1, 2026-11-16
 
 - Added the optional `PlacementGroup` (`*string`) and `Regions` (`*[]string`) fields to `CreateDeploymentRequest`, `UpdateDeploymentRequest`, `DeploymentResponseItem` and `RevisionDetailResponse`.

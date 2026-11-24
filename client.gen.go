@@ -823,6 +823,30 @@ func (e DEABExperimentMemberRole) Valid() bool {
 	}
 }
 
+// Defines values for DEAdapterEntryServingState.
+const (
+	DEAdapterEntryServingStateADAPTERSERVINGSTATEFAILED   DEAdapterEntryServingState = "ADAPTER_SERVING_STATE_FAILED"
+	DEAdapterEntryServingStateADAPTERSERVINGSTATEINACTIVE DEAdapterEntryServingState = "ADAPTER_SERVING_STATE_INACTIVE"
+	DEAdapterEntryServingStateADAPTERSERVINGSTATELOADING  DEAdapterEntryServingState = "ADAPTER_SERVING_STATE_LOADING"
+	DEAdapterEntryServingStateADAPTERSERVINGSTATEREADY    DEAdapterEntryServingState = "ADAPTER_SERVING_STATE_READY"
+)
+
+// Valid indicates whether the value is a known member of the DEAdapterEntryServingState enum.
+func (e DEAdapterEntryServingState) Valid() bool {
+	switch e {
+	case DEAdapterEntryServingStateADAPTERSERVINGSTATEFAILED:
+		return true
+	case DEAdapterEntryServingStateADAPTERSERVINGSTATEINACTIVE:
+		return true
+	case DEAdapterEntryServingStateADAPTERSERVINGSTATELOADING:
+		return true
+	case DEAdapterEntryServingStateADAPTERSERVINGSTATEREADY:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for DECancelRolloutRequestDisposition.
 const (
 	DECancelRolloutRequestDispositionCANCELDISPOSITIONFREEZE DECancelRolloutRequestDisposition = "CANCEL_DISPOSITION_FREEZE"
@@ -1921,6 +1945,45 @@ func (e DESupportedModelDeploymentProfileAdapterMode) Valid() bool {
 	case DESupportedModelDeploymentProfileAdapterModeADAPTERMODEDYNAMIC:
 		return true
 	case DESupportedModelDeploymentProfileAdapterModeADAPTERMODEFIXED:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DESupportedModelUnitPriceTier.
+const (
+	DESupportedModelUnitPriceTierPRICINGTIERBATCH    DESupportedModelUnitPriceTier = "PRICING_TIER_BATCH"
+	DESupportedModelUnitPriceTierPRICINGTIERREALTIME DESupportedModelUnitPriceTier = "PRICING_TIER_REALTIME"
+	DESupportedModelUnitPriceTierPRICINGTIERSTANDARD DESupportedModelUnitPriceTier = "PRICING_TIER_STANDARD"
+)
+
+// Valid indicates whether the value is a known member of the DESupportedModelUnitPriceTier enum.
+func (e DESupportedModelUnitPriceTier) Valid() bool {
+	switch e {
+	case DESupportedModelUnitPriceTierPRICINGTIERBATCH:
+		return true
+	case DESupportedModelUnitPriceTierPRICINGTIERREALTIME:
+		return true
+	case DESupportedModelUnitPriceTierPRICINGTIERSTANDARD:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DESupportedModelUnitPriceUnit.
+const (
+	DESupportedModelUnitPriceUnitPRICINGUNITAUDIOMINUTE       DESupportedModelUnitPriceUnit = "PRICING_UNIT_AUDIO_MINUTE"
+	DESupportedModelUnitPriceUnitPRICINGUNITMILLIONCHARACTERS DESupportedModelUnitPriceUnit = "PRICING_UNIT_MILLION_CHARACTERS"
+)
+
+// Valid indicates whether the value is a known member of the DESupportedModelUnitPriceUnit enum.
+func (e DESupportedModelUnitPriceUnit) Valid() bool {
+	switch e {
+	case DESupportedModelUnitPriceUnitPRICINGUNITAUDIOMINUTE:
+		return true
+	case DESupportedModelUnitPriceUnitPRICINGUNITMILLIONCHARACTERS:
 		return true
 	default:
 		return false
@@ -4354,30 +4417,30 @@ func (e HealthCheckServiceListPassiveHealthCheckAlertsParamsOrderBy) Valid() boo
 	}
 }
 
-// Defines values for GetEvaluationJobStatusAndResults200JSONResponseBodyStatus.
+// Defines values for GetV1EvaluationIdStatus200JSONResponseBodyStatus.
 const (
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusCompleted GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "completed"
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusError     GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "error"
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusPending   GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "pending"
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusQueued    GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "queued"
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusRunning   GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "running"
-	GetEvaluationJobStatusAndResults200JSONResponseBodyStatusUserError GetEvaluationJobStatusAndResults200JSONResponseBodyStatus = "user_error"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusCompleted GetV1EvaluationIdStatus200JSONResponseBodyStatus = "completed"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusError     GetV1EvaluationIdStatus200JSONResponseBodyStatus = "error"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusPending   GetV1EvaluationIdStatus200JSONResponseBodyStatus = "pending"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusQueued    GetV1EvaluationIdStatus200JSONResponseBodyStatus = "queued"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusRunning   GetV1EvaluationIdStatus200JSONResponseBodyStatus = "running"
+	GetV1EvaluationIdStatus200JSONResponseBodyStatusUserError GetV1EvaluationIdStatus200JSONResponseBodyStatus = "user_error"
 )
 
-// Valid indicates whether the value is a known member of the GetEvaluationJobStatusAndResults200JSONResponseBodyStatus enum.
-func (e GetEvaluationJobStatusAndResults200JSONResponseBodyStatus) Valid() bool {
+// Valid indicates whether the value is a known member of the GetV1EvaluationIdStatus200JSONResponseBodyStatus enum.
+func (e GetV1EvaluationIdStatus200JSONResponseBodyStatus) Valid() bool {
 	switch e {
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusCompleted:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusCompleted:
 		return true
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusError:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusError:
 		return true
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusPending:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusPending:
 		return true
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusQueued:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusQueued:
 		return true
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusRunning:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusRunning:
 		return true
-	case GetEvaluationJobStatusAndResults200JSONResponseBodyStatusUserError:
+	case GetV1EvaluationIdStatus200JSONResponseBodyStatusUserError:
 		return true
 	default:
 		return false
@@ -5983,6 +6046,9 @@ type CreateDeploymentRequest struct {
 	// ModelMounts Model weights to preload from Together's model registry into the container. At most one mount is supported, and it cannot be used with volumes.
 	ModelMounts *[]ModelMount `json:"model_mounts,omitempty"`
 
+	// ModelName ModelName is the model this deployment handles traffic for. Defaults to name of the deployment. A value used by one project as a deployment or model name is unavailable to other projects; within a project, any number of deployments may share a model name
+	ModelName *string `json:"model_name,omitempty"`
+
 	// Name Name is the unique identifier for your deployment. Must contain lowercase letters, numbers, or hyphens, start with a lowercase letter or number, and be 4-63 characters. It cannot be changed.
 	Name string `json:"name"`
 
@@ -6000,6 +6066,9 @@ type CreateDeploymentRequest struct {
 
 	// TerminationGracePeriodSeconds TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica
 	TerminationGracePeriodSeconds *int `json:"termination_grace_period_seconds,omitempty"`
+
+	// TrafficWeight TrafficWeight is the deployment's share of its model's traffic, relative to the other deployments of that model.
+	TrafficWeight *int `json:"traffic_weight,omitempty"`
 
 	// Volumes Volumes is a list of volume mounts to attach to the container. Each mount must reference an existing volume by name
 	Volumes *[]VolumeMount `json:"volumes,omitempty"`
@@ -6176,9 +6245,15 @@ type DEAdapterEntry struct {
 	// Id Adapter attachment `dad_` id used by get, update, and remove; stale ids never address a replacement after remove and re-add.
 	Id string `json:"id"`
 
-	// PerCluster Per-cluster adapter load state reported by the controller.
+	// PerCluster Per-cluster adapter load state reported by the controller for the clusters the deployment is placed on. Empty while the deployment is stopped or being torn down, and briefly after AddAdapter.
 	PerCluster []DEDeploymentAdapterStatus `json:"perCluster"`
+
+	// ServingState Whether the adapter can serve requests right now. INACTIVE means the deployment is stopped, scaled to zero, or being torn down; LOADING means a placed cluster has not finished loading it; READY means every placed cluster serves it; FAILED means a placed cluster failed to load it.
+	ServingState *DEAdapterEntryServingState `json:"servingState,omitempty"`
 }
+
+// DEAdapterEntryServingState Whether the adapter can serve requests right now. INACTIVE means the deployment is stopped, scaled to zero, or being torn down; LOADING means a placed cluster has not finished loading it; READY means every placed cluster serves it; FAILED means a placed cluster failed to load it.
+type DEAdapterEntryServingState string
 
 // DEAddAdapterRequest Configuration for attaching a LoRA adapter to a deployment that has adapter loading enabled.
 type DEAddAdapterRequest struct {
@@ -8304,6 +8379,9 @@ type DESupportedModel struct {
 	// Tags Searchable catalog tags for the model.
 	Tags *[]string `json:"tags,omitempty"`
 
+	// UnitPrices Serverless prices for usage not measured in tokens, such as minutes of transcribed audio or characters of synthesized speech, ordered by unit then tier. Empty when none are curated; a model priced the same on every tier lists only `PRICING_TIER_STANDARD`.
+	UnitPrices *[]DESupportedModelUnitPrice `json:"unitPrices,omitempty"`
+
 	// UpdatedAt Timestamp when the catalog entry was last updated.
 	UpdatedAt time.Time `json:"updatedAt"`
 }
@@ -8391,6 +8469,24 @@ type DESupportedModelPricing struct {
 	// Output Price in USD per one million output tokens.
 	Output *float64 `json:"output,omitempty"`
 }
+
+// DESupportedModelUnitPrice Serverless display price in USD per one non-token unit on one request tier.
+type DESupportedModelUnitPrice struct {
+	// PriceUsd Price in USD per one unit.
+	PriceUsd float64 `json:"priceUsd"`
+
+	// Tier Request tier the price applies to, such as synchronous HTTP, batch, or streaming realtime sessions.
+	Tier DESupportedModelUnitPriceTier `json:"tier"`
+
+	// Unit Billing unit, either one minute of input audio (speech-to-text) or one million input characters (text-to-speech).
+	Unit DESupportedModelUnitPriceUnit `json:"unit"`
+}
+
+// DESupportedModelUnitPriceTier Request tier the price applies to, such as synchronous HTTP, batch, or streaming realtime sessions.
+type DESupportedModelUnitPriceTier string
+
+// DESupportedModelUnitPriceUnit Billing unit, either one minute of input audio (speech-to-text) or one million input characters (text-to-speech).
+type DESupportedModelUnitPriceUnit string
 
 // DEThresholdCheck Threshold criteria that fail when the target metric violates the configured bound.
 type DEThresholdCheck struct {
@@ -8622,6 +8718,9 @@ type DeploymentResponseItem struct {
 	// ModelMounts Model weights mounted into this deployment, including the pinned revisions.
 	ModelMounts *[]ModelMount `json:"model_mounts,omitempty"`
 
+	// ModelName ModelName is the model the deployment handles traffic for. Equals name unless set
+	ModelName *string `json:"model_name,omitempty"`
+
 	// Name Name is the name of the deployment
 	Name *string `json:"name,omitempty"`
 
@@ -8651,6 +8750,9 @@ type DeploymentResponseItem struct {
 
 	// TerminationGracePeriodSeconds TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica
 	TerminationGracePeriodSeconds *int `json:"termination_grace_period_seconds,omitempty"`
+
+	// TrafficWeight TrafficWeight is the deployment's share of its model's traffic, relative to the other deployments of that model
+	TrafficWeight *int `json:"traffic_weight,omitempty"`
 
 	// UpdatedAt UpdatedAt is the ISO8601 timestamp when this deployment was last updated
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
@@ -8733,121 +8835,83 @@ type ErrorData struct {
 }
 
 // EvaluationClassifyParameters defines model for EvaluationClassifyParameters.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationClassifyParameters struct {
-	// InputDataFilePath Data file ID
-	InputDataFilePath string                     `json:"input_data_file_path"`
-	Judge             EvaluationJudgeModelConfig `json:"judge"`
-
-	// Labels List of possible classification labels
-	Labels          []string                 `json:"labels"`
+	InputDataFilePath string `json:"input_data_file_path"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	Judge  EvaluationJudgeModelConfig `json:"judge"`
+	Labels []string                   `json:"labels"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	ModelToEvaluate *EvaluationModelOrString `json:"model_to_evaluate,omitempty"`
-
-	// PassLabels List of labels that are considered passing
-	PassLabels []string `json:"pass_labels"`
+	PassLabels      []string                 `json:"pass_labels"`
 }
 
 // EvaluationClassifyResults defines model for EvaluationClassifyResults.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationClassifyResults struct {
-	// GenerationFailCount Number of failed generations.
 	GenerationFailCount *float32 `json:"generation_fail_count,omitempty"`
-
-	// InvalidLabelCount Number of invalid labels
-	InvalidLabelCount *float32 `json:"invalid_label_count,omitempty"`
-
-	// JudgeFailCount Number of failed judge generations
-	JudgeFailCount *float32 `json:"judge_fail_count,omitempty"`
-
-	// LabelCounts JSON string representing label counts
-	LabelCounts *string `json:"label_counts,omitempty"`
-
-	// PassPercentage Pecentage of pass labels.
-	PassPercentage *float32 `json:"pass_percentage,omitempty"`
-
-	// ResultFileId Data File ID
-	ResultFileId *string `json:"result_file_id,omitempty"`
+	InvalidLabelCount   *float32 `json:"invalid_label_count,omitempty"`
+	JudgeFailCount      *float32 `json:"judge_fail_count,omitempty"`
+	LabelCounts         *string  `json:"label_counts,omitempty"`
+	PassPercentage      *float32 `json:"pass_percentage,omitempty"`
+	ResultFileId        *string  `json:"result_file_id,omitempty"`
 }
 
 // EvaluationCompareParameters defines model for EvaluationCompareParameters.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationCompareParameters struct {
-	// DisablePositionBiasCorrection When false (default), the judge runs twice per sample: once with model A's response first (original order) and once with model B's response first (flipped order). The two verdicts are reconciled to cancel out position bias. When true, only the original-order pass is run, halving judge cost and latency at the expense of position-bias correction. The result file will not contain flipped-order judge fields when this is true.
-	DisablePositionBiasCorrection *bool `json:"disable_position_bias_correction,omitempty"`
-
-	// InputDataFilePath Data file ID
-	InputDataFilePath string                     `json:"input_data_file_path"`
-	Judge             EvaluationJudgeModelConfig `json:"judge"`
-
-	// ModelA Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.
+	DisablePositionBiasCorrection *bool  `json:"disable_position_bias_correction,omitempty"`
+	InputDataFilePath             string `json:"input_data_file_path"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	Judge  EvaluationJudgeModelConfig          `json:"judge"`
 	ModelA *EvaluationCompareParameters_ModelA `json:"model_a,omitempty"`
-
-	// ModelB Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.
 	ModelB *EvaluationCompareParameters_ModelB `json:"model_b,omitempty"`
 }
 
-// EvaluationCompareParametersModelA1 Column name in the input data containing pre-generated responses
+// EvaluationCompareParametersModelA1 defines model for EvaluationCompareParameters.ModelA.1.
 type EvaluationCompareParametersModelA1 = string
 
-// EvaluationCompareParameters_ModelA Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.
+// EvaluationCompareParameters_ModelA defines model for EvaluationCompareParameters.ModelA.
 type EvaluationCompareParameters_ModelA struct {
 	union json.RawMessage
 }
 
-// EvaluationCompareParametersModelB1 Column name in the input data containing pre-generated responses
+// EvaluationCompareParametersModelB1 defines model for EvaluationCompareParameters.ModelB.1.
 type EvaluationCompareParametersModelB1 = string
 
-// EvaluationCompareParameters_ModelB Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.
+// EvaluationCompareParameters_ModelB defines model for EvaluationCompareParameters.ModelB.
 type EvaluationCompareParameters_ModelB struct {
 	union json.RawMessage
 }
 
 // EvaluationCompareResults defines model for EvaluationCompareResults.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationCompareResults struct {
-	// AWins Number of samples where model A was judged the winner
-	AWins *int `json:"A_wins,omitempty"`
-
-	// BWins Number of samples where model B was judged the winner
-	BWins *int `json:"B_wins,omitempty"`
-
-	// Ties Number of samples that resulted in a tie score
-	Ties *int `json:"Ties,omitempty"`
-
-	// GenerationFailCount Number of generation failures across model A and model B.
+	AWins               *int     `json:"A_wins,omitempty"`
+	BWins               *int     `json:"B_wins,omitempty"`
+	Ties                *int     `json:"Ties,omitempty"`
 	GenerationFailCount *float32 `json:"generation_fail_count,omitempty"`
-
-	// JudgeFailCount Number of judge inference failures. In the default two-pass mode (disable_position_bias_correction=false) this is the combined failure count from both the original-order and flipped-order judge passes.
-	JudgeFailCount *float32 `json:"judge_fail_count,omitempty"`
-
-	// ResultFileId File ID of the detailed output file. Each row contains the original input fields plus judge outputs. In two-pass mode the file includes both original-order and flipped-order judge fields; in single-pass mode (disable_position_bias_correction=true) only original-order fields are present.
-	ResultFileId *string `json:"result_file_id,omitempty"`
+	JudgeFailCount      *float32 `json:"judge_fail_count,omitempty"`
+	ResultFileId        *string  `json:"result_file_id,omitempty"`
 }
 
 // EvaluationJob defines model for EvaluationJob.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationJob struct {
-	// CreatedAt When the job was created
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-
-	// OwnerId ID of the job owner (admin only)
-	OwnerId *string `json:"owner_id,omitempty"`
-
-	// Parameters The parameters used for this evaluation
-	Parameters *map[string]interface{} `json:"parameters,omitempty"`
-
-	// Results Results of the evaluation (when completed)
-	Results *EvaluationJob_Results `json:"results,omitempty"`
-
-	// Status Current status of the job
-	Status *EvaluationJobStatus `json:"status,omitempty"`
-
-	// StatusUpdates History of status updates (admin only)
+	CreatedAt     *time.Time                   `json:"created_at,omitempty"`
+	OwnerId       *string                      `json:"owner_id,omitempty"`
+	Parameters    *map[string]interface{}      `json:"parameters,omitempty"`
+	Results       *EvaluationJob_Results       `json:"results,omitempty"`
+	Status        *EvaluationJobStatus         `json:"status,omitempty"`
 	StatusUpdates *[]EvaluationJobStatusUpdate `json:"status_updates,omitempty"`
-
-	// Type The type of evaluation
-	Type *EvaluationJobType `json:"type,omitempty"`
-
-	// UpdatedAt When the job was last updated
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-
-	// WorkflowId The evaluation job ID
-	WorkflowId *string `json:"workflow_id,omitempty"`
+	Type          *EvaluationJobType           `json:"type,omitempty"`
+	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
+	WorkflowId    *string                      `json:"workflow_id,omitempty"`
 }
 
 // EvaluationJobResults3 defines model for EvaluationJob.Results.3.
@@ -8855,196 +8919,126 @@ type EvaluationJobResults3 struct {
 	Error *string `json:"error,omitempty"`
 }
 
-// EvaluationJob_Results Results of the evaluation (when completed)
+// EvaluationJob_Results defines model for EvaluationJob.Results.
 type EvaluationJob_Results struct {
 	union json.RawMessage
 }
 
-// EvaluationJobStatus Current status of the job
+// EvaluationJobStatus defines model for EvaluationJob.Status.
 type EvaluationJobStatus string
 
-// EvaluationJobType The type of evaluation
+// EvaluationJobType defines model for EvaluationJob.Type.
 type EvaluationJobType string
 
 // EvaluationJobStatusUpdate defines model for EvaluationJobStatusUpdate.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationJobStatusUpdate struct {
-	// Message Additional message for this update
-	Message *string `json:"message,omitempty"`
-
-	// Status The status at this update
-	Status *string `json:"status,omitempty"`
-
-	// Timestamp When this update occurred
+	Message   *string    `json:"message,omitempty"`
+	Status    *string    `json:"status,omitempty"`
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
 
 // EvaluationJudgeModelConfig defines model for EvaluationJudgeModelConfig.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationJudgeModelConfig struct {
-	// ExternalApiToken Bearer/API token for the external judge model provider. Required when model_source is 'external'.
-	ExternalApiToken *string `json:"external_api_token,omitempty"`
-
-	// ExternalBaseUrl Base URL of the external inference API for the judge. Must be OpenAI-compatible. Required when model_source is 'external'.
-	ExternalBaseUrl *string `json:"external_base_url,omitempty"`
-
-	// MaxTokens Maximum number of tokens the judge model may generate. Defaults to 32768 if omitted. Set higher for reasoning judges (e.g. o-series, Gemini) that spend tokens on internal chain-of-thought before emitting the verdict JSON.
-	MaxTokens *int `json:"max_tokens,omitempty"`
-
-	// Model Name of the judge model
-	Model string `json:"model"`
-
-	// ModelSource Source of the judge model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers
-	//
-	//   (minimum enforced even if num_workers is set lower).
-	// - `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).
-	//
-	//   Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
-	//   for first-party APIs, 20 for proxy/aggregator endpoints.
-	ModelSource EvaluationJudgeModelConfigModelSource `json:"model_source"`
-
-	// NumWorkers Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.
-	NumWorkers *int `json:"num_workers,omitempty"`
-
-	// SystemTemplate System prompt template for the judge
-	SystemTemplate string `json:"system_template"`
-
-	// Temperature Sampling temperature for the judge model. Defaults to 0.05 if omitted.
-	Temperature *float32 `json:"temperature,omitempty"`
+	ExternalApiToken *string                               `json:"external_api_token,omitempty"`
+	ExternalBaseUrl  *string                               `json:"external_base_url,omitempty"`
+	MaxTokens        *int                                  `json:"max_tokens,omitempty"`
+	Model            string                                `json:"model"`
+	ModelSource      EvaluationJudgeModelConfigModelSource `json:"model_source"`
+	NumWorkers       *int                                  `json:"num_workers,omitempty"`
+	SystemTemplate   string                                `json:"system_template"`
+	Temperature      *float32                              `json:"temperature,omitempty"`
 }
 
-// EvaluationJudgeModelConfigModelSource Source of the judge model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers
-//
-//	(minimum enforced even if num_workers is set lower).
-//
-// - `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).
-//
-//	Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
-//	for first-party APIs, 20 for proxy/aggregator endpoints.
+// EvaluationJudgeModelConfigModelSource defines model for EvaluationJudgeModelConfig.ModelSource.
 type EvaluationJudgeModelConfigModelSource string
 
 // EvaluationModelOrString defines model for EvaluationModelOrString.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationModelOrString struct {
 	union json.RawMessage
 }
 
-// EvaluationModelOrString0 Column name in the input dataset containing pre-generated responses
+// EvaluationModelOrString0 defines model for EvaluationModelOrString.0.
 type EvaluationModelOrString0 = string
 
 // EvaluationModelRequest defines model for EvaluationModelRequest.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationModelRequest struct {
-	// ExternalApiToken Bearer/API token for the external model provider. Required when model_source is 'external'.
-	ExternalApiToken *string `json:"external_api_token,omitempty"`
-
-	// ExternalBaseUrl Base URL of the external inference API. Must be OpenAI-compatible. Required when model_source is 'external'.
-	ExternalBaseUrl *string `json:"external_base_url,omitempty"`
-
-	// InputTemplate User message template. Supports Jinja2 variables referencing dataset columns.
-	InputTemplate string `json:"input_template"`
-
-	// MaxTokens Maximum number of tokens to generate.
-	MaxTokens int `json:"max_tokens"`
-
-	// Model Name of the model to evaluate
-	Model string `json:"model"`
-
-	// ModelSource Source of the model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers
-	//
-	//   (minimum enforced even if num_workers is set lower). Authentication uses the requesting
-	//   user's Together API token automatically.
-	// - `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).
-	//
-	//   Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
-	//   for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.
-	ModelSource EvaluationModelRequestModelSource `json:"model_source"`
-
-	// NumWorkers Number of concurrent inference workers. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.
-	NumWorkers *int `json:"num_workers,omitempty"`
-
-	// SystemTemplate System prompt template. Supports Jinja2 variables referencing dataset columns.
-	SystemTemplate string `json:"system_template"`
-
-	// Temperature Sampling temperature for generation.
-	Temperature float32 `json:"temperature"`
+	ExternalApiToken *string                           `json:"external_api_token,omitempty"`
+	ExternalBaseUrl  *string                           `json:"external_base_url,omitempty"`
+	InputTemplate    string                            `json:"input_template"`
+	MaxTokens        int                               `json:"max_tokens"`
+	Model            string                            `json:"model"`
+	ModelSource      EvaluationModelRequestModelSource `json:"model_source"`
+	NumWorkers       *int                              `json:"num_workers,omitempty"`
+	SystemTemplate   string                            `json:"system_template"`
+	Temperature      float32                           `json:"temperature"`
 }
 
-// EvaluationModelRequestModelSource Source of the model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers
-//
-//	(minimum enforced even if num_workers is set lower). Authentication uses the requesting
-//	user's Together API token automatically.
-//
-// - `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).
-//
-//	Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
-//	for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.
+// EvaluationModelRequestModelSource defines model for EvaluationModelRequest.ModelSource.
 type EvaluationModelRequestModelSource string
 
 // EvaluationResponse defines model for EvaluationResponse.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationResponse struct {
-	// Status Initial status of the job
-	Status *EvaluationResponseStatus `json:"status,omitempty"`
-
-	// WorkflowId The ID of the created evaluation job
-	WorkflowId *string `json:"workflow_id,omitempty"`
+	Status     *EvaluationResponseStatus `json:"status,omitempty"`
+	WorkflowId *string                   `json:"workflow_id,omitempty"`
 }
 
-// EvaluationResponseStatus Initial status of the job
+// EvaluationResponseStatus defines model for EvaluationResponse.Status.
 type EvaluationResponseStatus string
 
 // EvaluationScoreParameters defines model for EvaluationScoreParameters.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationScoreParameters struct {
-	// InputDataFilePath Data file ID
-	InputDataFilePath string                     `json:"input_data_file_path"`
-	Judge             EvaluationJudgeModelConfig `json:"judge"`
-
-	// MaxScore Maximum possible score
-	MaxScore float32 `json:"max_score"`
-
-	// MinScore Minimum possible score
-	MinScore        float32                  `json:"min_score"`
+	InputDataFilePath string `json:"input_data_file_path"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	Judge    EvaluationJudgeModelConfig `json:"judge"`
+	MaxScore float32                    `json:"max_score"`
+	MinScore float32                    `json:"min_score"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	ModelToEvaluate *EvaluationModelOrString `json:"model_to_evaluate,omitempty"`
-
-	// PassThreshold Score threshold for passing
-	PassThreshold float32 `json:"pass_threshold"`
+	PassThreshold   float32                  `json:"pass_threshold"`
 }
 
 // EvaluationScoreResults defines model for EvaluationScoreResults.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationScoreResults struct {
 	AggregatedScores *struct {
 		MeanScore      *float32 `json:"mean_score,omitempty"`
 		PassPercentage *float32 `json:"pass_percentage,omitempty"`
 		StdScore       *float32 `json:"std_score,omitempty"`
 	} `json:"aggregated_scores,omitempty"`
-
-	// FailedSamples number of failed samples generated from model
-	FailedSamples *float32 `json:"failed_samples,omitempty"`
-
-	// GenerationFailCount Number of failed generations.
+	FailedSamples       *float32 `json:"failed_samples,omitempty"`
 	GenerationFailCount *float32 `json:"generation_fail_count,omitempty"`
-
-	// InvalidScoreCount number of invalid scores generated from model
-	InvalidScoreCount *float32 `json:"invalid_score_count,omitempty"`
-
-	// JudgeFailCount Number of failed judge generations
-	JudgeFailCount *float32 `json:"judge_fail_count,omitempty"`
-
-	// ResultFileId Data File ID
-	ResultFileId *string `json:"result_file_id,omitempty"`
+	InvalidScoreCount   *float32 `json:"invalid_score_count,omitempty"`
+	JudgeFailCount      *float32 `json:"judge_fail_count,omitempty"`
+	ResultFileId        *string  `json:"result_file_id,omitempty"`
 }
 
 // EvaluationTypedRequest defines model for EvaluationTypedRequest.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type EvaluationTypedRequest struct {
-	// Parameters Type-specific parameters for the evaluation
 	Parameters EvaluationTypedRequest_Parameters `json:"parameters"`
-
-	// Type The type of evaluation to perform
-	Type EvaluationTypedRequestType `json:"type"`
+	Type       EvaluationTypedRequestType        `json:"type"`
 }
 
-// EvaluationTypedRequest_Parameters Type-specific parameters for the evaluation
+// EvaluationTypedRequest_Parameters defines model for EvaluationTypedRequest.Parameters.
 type EvaluationTypedRequest_Parameters struct {
 	union json.RawMessage
 }
 
-// EvaluationTypedRequestType The type of evaluation to perform
+// EvaluationTypedRequestType defines model for EvaluationTypedRequest.Type.
 type EvaluationTypedRequestType string
 
 // EventLevel Severity level for a shaping event.
@@ -12797,7 +12791,10 @@ type UpdateDeploymentRequest struct {
 	// ModelMounts Replacement model weights to mount into the deployment. At most one mount is supported, and it cannot be used with volumes.
 	ModelMounts *[]ModelMount `json:"model_mounts,omitempty"`
 
-	// Name Name is the new unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)
+	// ModelName ModelName changes the model this deployment handles traffic for. Can be omitted. Send the deployment name to reset it
+	ModelName *string `json:"model_name,omitempty"`
+
+	// Name Name is the deployment's current name. Deployment names cannot be changed after creation
 	Name *string `json:"name,omitempty"`
 
 	// PlacementGroup PlacementGroup co-locates deployments that share this value onto one cluster. A member that cannot co-locate stays pending. Send an empty string to clear the group; omit to leave it unchanged
@@ -12814,6 +12811,9 @@ type UpdateDeploymentRequest struct {
 
 	// TerminationGracePeriodSeconds TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica
 	TerminationGracePeriodSeconds *int `json:"termination_grace_period_seconds,omitempty"`
+
+	// TrafficWeight TrafficWeight is the deployment's share of its model's traffic, relative to the other deployments of that model.
+	TrafficWeight *int `json:"traffic_weight,omitempty"`
 
 	// Volumes Volumes is a list of volume mounts to attach to the container. Replaces all existing volumes.
 	Volumes *[]VolumeMount `json:"volumes,omitempty"`
@@ -12924,6 +12924,9 @@ type VideoJob struct {
 		Code    *string `json:"code,omitempty"`
 		Message string  `json:"message"`
 	} `json:"error,omitempty"`
+
+	// EstimatedDoneAt Estimated Unix timestamp (seconds) for when the job is expected to finish. This is an estimate, not a guarantee. It is only returned when creating a video and an estimate is available.
+	EstimatedDoneAt *float32 `json:"estimated_done_at,omitempty"`
 
 	// Id Unique identifier for the video job.
 	Id string `json:"id"`
@@ -13303,24 +13306,24 @@ type GetV1DeploymentsIdRevisionsParams struct {
 	Before *int `form:"before,omitempty" json:"before,omitempty"`
 }
 
-// GetAllEvaluationJobsParams defines parameters for GetAllEvaluationJobs.
-type GetAllEvaluationJobsParams struct {
+// GetV1EvaluationParams defines parameters for GetV1Evaluation.
+type GetV1EvaluationParams struct {
 	Status *string `form:"status,omitempty" json:"status,omitempty"`
 	Limit  *int    `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
-// GetModelListParams defines parameters for GetModelList.
-type GetModelListParams struct {
+// GetV1EvaluationModelListParams defines parameters for GetV1EvaluationModelList.
+type GetV1EvaluationModelListParams struct {
 	ModelSource *string `form:"model_source,omitempty" json:"model_source,omitempty"`
 }
 
-// GetEvaluationJobStatusAndResults200JSONResponseBody_Results defines parameters for GetEvaluationJobStatusAndResults.
-type GetEvaluationJobStatusAndResults200JSONResponseBody_Results struct {
+// GetV1EvaluationIdStatus200JSONResponseBody_Results defines parameters for GetV1EvaluationIdStatus.
+type GetV1EvaluationIdStatus200JSONResponseBody_Results struct {
 	union json.RawMessage
 }
 
-// GetEvaluationJobStatusAndResults200JSONResponseBodyStatus defines parameters for GetEvaluationJobStatusAndResults.
-type GetEvaluationJobStatusAndResults200JSONResponseBodyStatus string
+// GetV1EvaluationIdStatus200JSONResponseBodyStatus defines parameters for GetV1EvaluationIdStatus.
+type GetV1EvaluationIdStatus200JSONResponseBodyStatus string
 
 // PostV1FilesUploadMultipartBody defines parameters for PostV1FilesUpload.
 type PostV1FilesUploadMultipartBody struct {
@@ -14051,8 +14054,10 @@ type PostV1DeploymentsIdRollbackJSONRequestBody = RollbackDeploymentRequest
 // EmbeddingsJSONRequestBody defines body for Embeddings for application/json ContentType.
 type EmbeddingsJSONRequestBody = EmbeddingsRequest
 
-// CreateEvaluationJobJSONRequestBody defines body for CreateEvaluationJob for application/json ContentType.
-type CreateEvaluationJobJSONRequestBody = EvaluationTypedRequest
+// PostV1EvaluationJSONRequestBody defines body for PostV1Evaluation for application/json ContentType.
+//
+// Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+type PostV1EvaluationJSONRequestBody = EvaluationTypedRequest
 
 // PostV1FilesUploadMultipartRequestBody defines body for PostV1FilesUpload for multipart/form-data ContentType.
 type PostV1FilesUploadMultipartRequestBody PostV1FilesUploadMultipartBody
@@ -18878,22 +18883,22 @@ func (t *WhoamiResponse) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsEvaluationClassifyResults returns the union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as a EvaluationClassifyResults
-func (t GetEvaluationJobStatusAndResults200JSONResponseBody_Results) AsEvaluationClassifyResults() (EvaluationClassifyResults, error) {
+// AsEvaluationClassifyResults returns the union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as a EvaluationClassifyResults
+func (t GetV1EvaluationIdStatus200JSONResponseBody_Results) AsEvaluationClassifyResults() (EvaluationClassifyResults, error) {
 	var body EvaluationClassifyResults
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromEvaluationClassifyResults overwrites any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as the provided EvaluationClassifyResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) FromEvaluationClassifyResults(v EvaluationClassifyResults) error {
+// FromEvaluationClassifyResults overwrites any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as the provided EvaluationClassifyResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) FromEvaluationClassifyResults(v EvaluationClassifyResults) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeEvaluationClassifyResults performs a merge with any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results, using the provided EvaluationClassifyResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvaluationClassifyResults(v EvaluationClassifyResults) error {
+// MergeEvaluationClassifyResults performs a merge with any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results, using the provided EvaluationClassifyResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) MergeEvaluationClassifyResults(v EvaluationClassifyResults) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -18904,22 +18909,22 @@ func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvalu
 	return err
 }
 
-// AsEvaluationScoreResults returns the union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as a EvaluationScoreResults
-func (t GetEvaluationJobStatusAndResults200JSONResponseBody_Results) AsEvaluationScoreResults() (EvaluationScoreResults, error) {
+// AsEvaluationScoreResults returns the union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as a EvaluationScoreResults
+func (t GetV1EvaluationIdStatus200JSONResponseBody_Results) AsEvaluationScoreResults() (EvaluationScoreResults, error) {
 	var body EvaluationScoreResults
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromEvaluationScoreResults overwrites any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as the provided EvaluationScoreResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) FromEvaluationScoreResults(v EvaluationScoreResults) error {
+// FromEvaluationScoreResults overwrites any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as the provided EvaluationScoreResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) FromEvaluationScoreResults(v EvaluationScoreResults) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeEvaluationScoreResults performs a merge with any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results, using the provided EvaluationScoreResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvaluationScoreResults(v EvaluationScoreResults) error {
+// MergeEvaluationScoreResults performs a merge with any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results, using the provided EvaluationScoreResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) MergeEvaluationScoreResults(v EvaluationScoreResults) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -18930,22 +18935,22 @@ func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvalu
 	return err
 }
 
-// AsEvaluationCompareResults returns the union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as a EvaluationCompareResults
-func (t GetEvaluationJobStatusAndResults200JSONResponseBody_Results) AsEvaluationCompareResults() (EvaluationCompareResults, error) {
+// AsEvaluationCompareResults returns the union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as a EvaluationCompareResults
+func (t GetV1EvaluationIdStatus200JSONResponseBody_Results) AsEvaluationCompareResults() (EvaluationCompareResults, error) {
 	var body EvaluationCompareResults
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromEvaluationCompareResults overwrites any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results as the provided EvaluationCompareResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) FromEvaluationCompareResults(v EvaluationCompareResults) error {
+// FromEvaluationCompareResults overwrites any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results as the provided EvaluationCompareResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) FromEvaluationCompareResults(v EvaluationCompareResults) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeEvaluationCompareResults performs a merge with any union data inside the GetEvaluationJobStatusAndResults200JSONResponseBody_Results, using the provided EvaluationCompareResults
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvaluationCompareResults(v EvaluationCompareResults) error {
+// MergeEvaluationCompareResults performs a merge with any union data inside the GetV1EvaluationIdStatus200JSONResponseBody_Results, using the provided EvaluationCompareResults
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) MergeEvaluationCompareResults(v EvaluationCompareResults) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -18956,12 +18961,12 @@ func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MergeEvalu
 	return err
 }
 
-func (t GetEvaluationJobStatusAndResults200JSONResponseBody_Results) MarshalJSON() ([]byte, error) {
+func (t GetV1EvaluationIdStatus200JSONResponseBody_Results) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *GetEvaluationJobStatusAndResults200JSONResponseBody_Results) UnmarshalJSON(b []byte) error {
+func (t *GetV1EvaluationIdStatus200JSONResponseBody_Results) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -20204,39 +20209,37 @@ type ClientInterface interface {
 	// Corresponds with POST /v1/embeddings (the `Embeddings` operationId).
 	Embeddings(ctx context.Context, body EmbeddingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetAllEvaluationJobs Get all evaluation jobs
+	// GetV1Evaluation performs a GET /v1/evaluation (the `GetV1Evaluation` operationId) request.
 	//
-	// Corresponds with GET /v1/evaluation (the `GetAllEvaluationJobs` operationId).
-	GetAllEvaluationJobs(ctx context.Context, params *GetAllEvaluationJobsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1Evaluation(ctx context.Context, params *GetV1EvaluationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateEvaluationJobWithBody Create an evaluation job
+	// PostV1EvaluationWithBody performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request,
+	// with any type of body and a specified content type.
 	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-	CreateEvaluationJobWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	PostV1EvaluationWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateEvaluationJob Create an evaluation job
-	//
+	// PostV1Evaluation performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request.
 	// Takes a body of the `application/json` content type.
 	//
-	// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-	CreateEvaluationJob(ctx context.Context, body CreateEvaluationJobJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	PostV1Evaluation(ctx context.Context, body PostV1EvaluationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetModelList Get model list
+	// GetV1EvaluationModelList performs a GET /v1/evaluation/model-list (the `GetV1EvaluationModelList` operationId) request.
 	//
-	// Corresponds with GET /v1/evaluation/model-list (the `GetModelList` operationId).
-	GetModelList(ctx context.Context, params *GetModelListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationModelList(ctx context.Context, params *GetV1EvaluationModelListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetEvaluationJobDetails Get evaluation job details
+	// GetV1EvaluationId performs a GET /v1/evaluation/{id} (the `GetV1EvaluationId` operationId) request.
 	//
-	// Corresponds with GET /v1/evaluation/{id} (the `GetEvaluationJobDetails` operationId).
-	GetEvaluationJobDetails(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetEvaluationJobStatusAndResults Get evaluation job status and results
+	// GetV1EvaluationIdStatus performs a GET /v1/evaluation/{id}/status (the `GetV1EvaluationIdStatus` operationId) request.
 	//
-	// Corresponds with GET /v1/evaluation/{id}/status (the `GetEvaluationJobStatusAndResults` operationId).
-	GetEvaluationJobStatusAndResults(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationIdStatus(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1Files List all files
 	//
@@ -23291,11 +23294,10 @@ func (c *Client) Embeddings(ctx context.Context, body EmbeddingsJSONRequestBody,
 	return c.Client.Do(req)
 }
 
-// GetAllEvaluationJobs Get all evaluation jobs
-//
-// Corresponds with GET /v1/evaluation (the `GetAllEvaluationJobs` operationId).
-func (c *Client) GetAllEvaluationJobs(ctx context.Context, params *GetAllEvaluationJobsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAllEvaluationJobsRequest(c.Server, params)
+// GetV1Evaluation performs a GET /v1/evaluation (the `GetV1Evaluation` operationId) request.
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) GetV1Evaluation(ctx context.Context, params *GetV1EvaluationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1EvaluationRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -23306,13 +23308,11 @@ func (c *Client) GetAllEvaluationJobs(ctx context.Context, params *GetAllEvaluat
 	return c.Client.Do(req)
 }
 
-// CreateEvaluationJobWithBody Create an evaluation job
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-func (c *Client) CreateEvaluationJobWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateEvaluationJobRequestWithBody(c.Server, contentType, body)
+// PostV1EvaluationWithBody performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request,
+// with any type of body and a specified content type.
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) PostV1EvaluationWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1EvaluationRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -23323,13 +23323,11 @@ func (c *Client) CreateEvaluationJobWithBody(ctx context.Context, contentType st
 	return c.Client.Do(req)
 }
 
-// CreateEvaluationJob Create an evaluation job
-//
+// PostV1Evaluation performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request.
 // Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-func (c *Client) CreateEvaluationJob(ctx context.Context, body CreateEvaluationJobJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateEvaluationJobRequest(c.Server, body)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) PostV1Evaluation(ctx context.Context, body PostV1EvaluationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1EvaluationRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -23340,11 +23338,10 @@ func (c *Client) CreateEvaluationJob(ctx context.Context, body CreateEvaluationJ
 	return c.Client.Do(req)
 }
 
-// GetModelList Get model list
-//
-// Corresponds with GET /v1/evaluation/model-list (the `GetModelList` operationId).
-func (c *Client) GetModelList(ctx context.Context, params *GetModelListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetModelListRequest(c.Server, params)
+// GetV1EvaluationModelList performs a GET /v1/evaluation/model-list (the `GetV1EvaluationModelList` operationId) request.
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) GetV1EvaluationModelList(ctx context.Context, params *GetV1EvaluationModelListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1EvaluationModelListRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -23355,11 +23352,10 @@ func (c *Client) GetModelList(ctx context.Context, params *GetModelListParams, r
 	return c.Client.Do(req)
 }
 
-// GetEvaluationJobDetails Get evaluation job details
-//
-// Corresponds with GET /v1/evaluation/{id} (the `GetEvaluationJobDetails` operationId).
-func (c *Client) GetEvaluationJobDetails(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetEvaluationJobDetailsRequest(c.Server, id)
+// GetV1EvaluationId performs a GET /v1/evaluation/{id} (the `GetV1EvaluationId` operationId) request.
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) GetV1EvaluationId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1EvaluationIdRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -23370,11 +23366,10 @@ func (c *Client) GetEvaluationJobDetails(ctx context.Context, id string, reqEdit
 	return c.Client.Do(req)
 }
 
-// GetEvaluationJobStatusAndResults Get evaluation job status and results
-//
-// Corresponds with GET /v1/evaluation/{id}/status (the `GetEvaluationJobStatusAndResults` operationId).
-func (c *Client) GetEvaluationJobStatusAndResults(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetEvaluationJobStatusAndResultsRequest(c.Server, id)
+// GetV1EvaluationIdStatus performs a GET /v1/evaluation/{id}/status (the `GetV1EvaluationIdStatus` operationId) request.
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *Client) GetV1EvaluationIdStatus(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1EvaluationIdStatusRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -29332,8 +29327,8 @@ func NewEmbeddingsRequestWithBody(server string, contentType string, body io.Rea
 	return req, nil
 }
 
-// NewGetAllEvaluationJobsRequest constructs an http.Request for the GetAllEvaluationJobs method
-func NewGetAllEvaluationJobsRequest(server string, params *GetAllEvaluationJobsParams) (*http.Request, error) {
+// NewGetV1EvaluationRequest constructs an http.Request for the GetV1Evaluation method
+func NewGetV1EvaluationRequest(server string, params *GetV1EvaluationParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -29398,19 +29393,19 @@ func NewGetAllEvaluationJobsRequest(server string, params *GetAllEvaluationJobsP
 	return req, nil
 }
 
-// NewCreateEvaluationJobRequest calls the generic CreateEvaluationJob builder with application/json body
-func NewCreateEvaluationJobRequest(server string, body CreateEvaluationJobJSONRequestBody) (*http.Request, error) {
+// NewPostV1EvaluationRequest calls the generic PostV1Evaluation builder with application/json body
+func NewPostV1EvaluationRequest(server string, body PostV1EvaluationJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCreateEvaluationJobRequestWithBody(server, "application/json", bodyReader)
+	return NewPostV1EvaluationRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewCreateEvaluationJobRequestWithBody constructs an http.Request for the CreateEvaluationJob method, with any body, and a specified content type
-func NewCreateEvaluationJobRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostV1EvaluationRequestWithBody constructs an http.Request for the PostV1Evaluation method, with any body, and a specified content type
+func NewPostV1EvaluationRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -29438,8 +29433,8 @@ func NewCreateEvaluationJobRequestWithBody(server string, contentType string, bo
 	return req, nil
 }
 
-// NewGetModelListRequest constructs an http.Request for the GetModelList method
-func NewGetModelListRequest(server string, params *GetModelListParams) (*http.Request, error) {
+// NewGetV1EvaluationModelListRequest constructs an http.Request for the GetV1EvaluationModelList method
+func NewGetV1EvaluationModelListRequest(server string, params *GetV1EvaluationModelListParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -29492,8 +29487,8 @@ func NewGetModelListRequest(server string, params *GetModelListParams) (*http.Re
 	return req, nil
 }
 
-// NewGetEvaluationJobDetailsRequest constructs an http.Request for the GetEvaluationJobDetails method
-func NewGetEvaluationJobDetailsRequest(server string, id string) (*http.Request, error) {
+// NewGetV1EvaluationIdRequest constructs an http.Request for the GetV1EvaluationId method
+func NewGetV1EvaluationIdRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -29526,8 +29521,8 @@ func NewGetEvaluationJobDetailsRequest(server string, id string) (*http.Request,
 	return req, nil
 }
 
-// NewGetEvaluationJobStatusAndResultsRequest constructs an http.Request for the GetEvaluationJobStatusAndResults method
-func NewGetEvaluationJobStatusAndResultsRequest(server string, id string) (*http.Request, error) {
+// NewGetV1EvaluationIdStatusRequest constructs an http.Request for the GetV1EvaluationIdStatus method
+func NewGetV1EvaluationIdStatusRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -37997,47 +37992,47 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /v1/embeddings (the `Embeddings` operationId).
 	EmbeddingsWithResponse(ctx context.Context, body EmbeddingsJSONRequestBody, reqEditors ...RequestEditorFn) (*EmbeddingsResponse2, error)
 
-	// GetAllEvaluationJobsWithResponse Get all evaluation jobs
+	// GetV1EvaluationWithResponse performs a GET /v1/evaluation (the `GetV1Evaluation` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /v1/evaluation (the `GetAllEvaluationJobs` operationId).
-	GetAllEvaluationJobsWithResponse(ctx context.Context, params *GetAllEvaluationJobsParams, reqEditors ...RequestEditorFn) (*GetAllEvaluationJobsResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationWithResponse(ctx context.Context, params *GetV1EvaluationParams, reqEditors ...RequestEditorFn) (*GetV1EvaluationResponse, error)
 
-	// CreateEvaluationJobWithBodyWithResponse Create an evaluation job
+	// PostV1EvaluationWithBodyWithResponse performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request,
+	// with any type of body and a specified content type.
 	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-	CreateEvaluationJobWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateEvaluationJobResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	PostV1EvaluationWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1EvaluationResponse, error)
 
-	// CreateEvaluationJobWithResponse Create an evaluation job
-	//
+	// PostV1EvaluationWithResponse performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request.
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-	CreateEvaluationJobWithResponse(ctx context.Context, body CreateEvaluationJobJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateEvaluationJobResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	PostV1EvaluationWithResponse(ctx context.Context, body PostV1EvaluationJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1EvaluationResponse, error)
 
-	// GetModelListWithResponse Get model list
+	// GetV1EvaluationModelListWithResponse performs a GET /v1/evaluation/model-list (the `GetV1EvaluationModelList` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /v1/evaluation/model-list (the `GetModelList` operationId).
-	GetModelListWithResponse(ctx context.Context, params *GetModelListParams, reqEditors ...RequestEditorFn) (*GetModelListResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationModelListWithResponse(ctx context.Context, params *GetV1EvaluationModelListParams, reqEditors ...RequestEditorFn) (*GetV1EvaluationModelListResponse, error)
 
-	// GetEvaluationJobDetailsWithResponse Get evaluation job details
+	// GetV1EvaluationIdWithResponse performs a GET /v1/evaluation/{id} (the `GetV1EvaluationId` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /v1/evaluation/{id} (the `GetEvaluationJobDetails` operationId).
-	GetEvaluationJobDetailsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetEvaluationJobDetailsResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetV1EvaluationIdResponse, error)
 
-	// GetEvaluationJobStatusAndResultsWithResponse Get evaluation job status and results
+	// GetV1EvaluationIdStatusWithResponse performs a GET /v1/evaluation/{id}/status (the `GetV1EvaluationIdStatus` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
-	// Corresponds with GET /v1/evaluation/{id}/status (the `GetEvaluationJobStatusAndResults` operationId).
-	GetEvaluationJobStatusAndResultsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetEvaluationJobStatusAndResultsResponse, error)
+	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	GetV1EvaluationIdStatusWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetV1EvaluationIdStatusResponse, error)
 
 	// GetV1FilesWithResponse List all files
 	//
@@ -42719,39 +42714,32 @@ func (r EmbeddingsResponse2) ContentType() string {
 	return ""
 }
 
-type GetAllEvaluationJobsResponse struct {
+type GetV1EvaluationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *[]EvaluationJob
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *ErrorData
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *ErrorData
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *ErrorData
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetAllEvaluationJobsResponse) GetJSON200() *[]EvaluationJob {
+func (r GetV1EvaluationResponse) GetJSON200() *[]EvaluationJob {
 	return r.JSON200
 }
 
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r GetAllEvaluationJobsResponse) GetJSON400() *ErrorData {
-	return r.JSON400
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r GetAllEvaluationJobsResponse) GetJSON500() *ErrorData {
-	return r.JSON500
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r GetV1EvaluationResponse) GetJSON410() *ErrorData {
+	return r.JSON410
 }
 
 // GetBody returns the raw response body bytes
-func (r GetAllEvaluationJobsResponse) GetBody() []byte {
+func (r GetV1EvaluationResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetAllEvaluationJobsResponse) Status() string {
+func (r GetV1EvaluationResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42759,7 +42747,7 @@ func (r GetAllEvaluationJobsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetAllEvaluationJobsResponse) StatusCode() int {
+func (r GetV1EvaluationResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42767,46 +42755,39 @@ func (r GetAllEvaluationJobsResponse) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetAllEvaluationJobsResponse) ContentType() string {
+func (r GetV1EvaluationResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
 	return ""
 }
 
-type CreateEvaluationJobResponse struct {
+type PostV1EvaluationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *EvaluationResponse
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *ErrorData
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *ErrorData
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *ErrorData
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CreateEvaluationJobResponse) GetJSON200() *EvaluationResponse {
+func (r PostV1EvaluationResponse) GetJSON200() *EvaluationResponse {
 	return r.JSON200
 }
 
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CreateEvaluationJobResponse) GetJSON400() *ErrorData {
-	return r.JSON400
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CreateEvaluationJobResponse) GetJSON500() *ErrorData {
-	return r.JSON500
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r PostV1EvaluationResponse) GetJSON410() *ErrorData {
+	return r.JSON410
 }
 
 // GetBody returns the raw response body bytes
-func (r CreateEvaluationJobResponse) GetBody() []byte {
+func (r PostV1EvaluationResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateEvaluationJobResponse) Status() string {
+func (r PostV1EvaluationResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42814,7 +42795,7 @@ func (r CreateEvaluationJobResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateEvaluationJobResponse) StatusCode() int {
+func (r PostV1EvaluationResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42822,50 +42803,43 @@ func (r CreateEvaluationJobResponse) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CreateEvaluationJobResponse) ContentType() string {
+func (r PostV1EvaluationResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
 	return ""
 }
 
-type GetModelListResponse struct {
+type GetV1EvaluationModelListResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *struct {
 		ModelList *[]string `json:"model_list,omitempty"`
 	}
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *ErrorData
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *ErrorData
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *ErrorData
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetModelListResponse) GetJSON200() *struct {
+func (r GetV1EvaluationModelListResponse) GetJSON200() *struct {
 	ModelList *[]string `json:"model_list,omitempty"`
 } {
 	return r.JSON200
 }
 
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r GetModelListResponse) GetJSON400() *ErrorData {
-	return r.JSON400
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r GetModelListResponse) GetJSON500() *ErrorData {
-	return r.JSON500
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r GetV1EvaluationModelListResponse) GetJSON410() *ErrorData {
+	return r.JSON410
 }
 
 // GetBody returns the raw response body bytes
-func (r GetModelListResponse) GetBody() []byte {
+func (r GetV1EvaluationModelListResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetModelListResponse) Status() string {
+func (r GetV1EvaluationModelListResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42873,7 +42847,7 @@ func (r GetModelListResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetModelListResponse) StatusCode() int {
+func (r GetV1EvaluationModelListResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42881,46 +42855,39 @@ func (r GetModelListResponse) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetModelListResponse) ContentType() string {
+func (r GetV1EvaluationModelListResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
 	return ""
 }
 
-type GetEvaluationJobDetailsResponse struct {
+type GetV1EvaluationIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *EvaluationJob
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *ErrorData
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *ErrorData
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *ErrorData
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetEvaluationJobDetailsResponse) GetJSON200() *EvaluationJob {
+func (r GetV1EvaluationIdResponse) GetJSON200() *EvaluationJob {
 	return r.JSON200
 }
 
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r GetEvaluationJobDetailsResponse) GetJSON404() *ErrorData {
-	return r.JSON404
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r GetEvaluationJobDetailsResponse) GetJSON500() *ErrorData {
-	return r.JSON500
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r GetV1EvaluationIdResponse) GetJSON410() *ErrorData {
+	return r.JSON410
 }
 
 // GetBody returns the raw response body bytes
-func (r GetEvaluationJobDetailsResponse) GetBody() []byte {
+func (r GetV1EvaluationIdResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetEvaluationJobDetailsResponse) Status() string {
+func (r GetV1EvaluationIdResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42928,7 +42895,7 @@ func (r GetEvaluationJobDetailsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetEvaluationJobDetailsResponse) StatusCode() int {
+func (r GetV1EvaluationIdResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -42936,58 +42903,45 @@ func (r GetEvaluationJobDetailsResponse) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetEvaluationJobDetailsResponse) ContentType() string {
+func (r GetV1EvaluationIdResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
 	return ""
 }
 
-type GetEvaluationJobStatusAndResultsResponse struct {
+type GetV1EvaluationIdStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *struct {
-		// Results The results of the evaluation job
-		Results *GetEvaluationJobStatusAndResults200JSONResponseBody_Results `json:"results,omitempty"`
-
-		// Status The status of the evaluation job
-		Status *GetEvaluationJobStatusAndResults200JSONResponseBodyStatus `json:"status,omitempty"`
+		Results *GetV1EvaluationIdStatus200JSONResponseBody_Results `json:"results,omitempty"`
+		Status  *GetV1EvaluationIdStatus200JSONResponseBodyStatus   `json:"status,omitempty"`
 	}
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *ErrorData
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *ErrorData
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *ErrorData
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r GetEvaluationJobStatusAndResultsResponse) GetJSON200() *struct {
-	// Results The results of the evaluation job
-	Results *GetEvaluationJobStatusAndResults200JSONResponseBody_Results `json:"results,omitempty"`
-
-	// Status The status of the evaluation job
-	Status *GetEvaluationJobStatusAndResults200JSONResponseBodyStatus `json:"status,omitempty"`
+func (r GetV1EvaluationIdStatusResponse) GetJSON200() *struct {
+	Results *GetV1EvaluationIdStatus200JSONResponseBody_Results `json:"results,omitempty"`
+	Status  *GetV1EvaluationIdStatus200JSONResponseBodyStatus   `json:"status,omitempty"`
 } {
 	return r.JSON200
 }
 
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r GetEvaluationJobStatusAndResultsResponse) GetJSON404() *ErrorData {
-	return r.JSON404
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r GetEvaluationJobStatusAndResultsResponse) GetJSON500() *ErrorData {
-	return r.JSON500
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r GetV1EvaluationIdStatusResponse) GetJSON410() *ErrorData {
+	return r.JSON410
 }
 
 // GetBody returns the raw response body bytes
-func (r GetEvaluationJobStatusAndResultsResponse) GetBody() []byte {
+func (r GetV1EvaluationIdStatusResponse) GetBody() []byte {
 	return r.Body
 }
 
 // Status returns HTTPResponse.Status
-func (r GetEvaluationJobStatusAndResultsResponse) Status() string {
+func (r GetV1EvaluationIdStatusResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -42995,7 +42949,7 @@ func (r GetEvaluationJobStatusAndResultsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetEvaluationJobStatusAndResultsResponse) StatusCode() int {
+func (r GetV1EvaluationIdStatusResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -43003,7 +42957,7 @@ func (r GetEvaluationJobStatusAndResultsResponse) StatusCode() int {
 }
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r GetEvaluationJobStatusAndResultsResponse) ContentType() string {
+func (r GetV1EvaluationIdStatusResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -51080,82 +51034,81 @@ func (c *ClientWithResponses) EmbeddingsWithResponse(ctx context.Context, body E
 	return ParseEmbeddingsResponse2(rsp)
 }
 
-// GetAllEvaluationJobsWithResponse Get all evaluation jobs
+// GetV1EvaluationWithResponse performs a GET /v1/evaluation (the `GetV1Evaluation` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /v1/evaluation (the `GetAllEvaluationJobs` operationId).
-func (c *ClientWithResponses) GetAllEvaluationJobsWithResponse(ctx context.Context, params *GetAllEvaluationJobsParams, reqEditors ...RequestEditorFn) (*GetAllEvaluationJobsResponse, error) {
-	rsp, err := c.GetAllEvaluationJobs(ctx, params, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) GetV1EvaluationWithResponse(ctx context.Context, params *GetV1EvaluationParams, reqEditors ...RequestEditorFn) (*GetV1EvaluationResponse, error) {
+	rsp, err := c.GetV1Evaluation(ctx, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetAllEvaluationJobsResponse(rsp)
+	return ParseGetV1EvaluationResponse(rsp)
 }
 
-// CreateEvaluationJobWithBodyWithResponse Create an evaluation job
+// PostV1EvaluationWithBodyWithResponse performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request,
+// with any type of body and a specified content type.
 //
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+// Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-func (c *ClientWithResponses) CreateEvaluationJobWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateEvaluationJobResponse, error) {
-	rsp, err := c.CreateEvaluationJobWithBody(ctx, contentType, body, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) PostV1EvaluationWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1EvaluationResponse, error) {
+	rsp, err := c.PostV1EvaluationWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateEvaluationJobResponse(rsp)
+	return ParsePostV1EvaluationResponse(rsp)
 }
 
-// CreateEvaluationJobWithResponse Create an evaluation job
-//
+// PostV1EvaluationWithResponse performs a POST /v1/evaluation (the `PostV1Evaluation` operationId) request.
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/evaluation (the `CreateEvaluationJob` operationId).
-func (c *ClientWithResponses) CreateEvaluationJobWithResponse(ctx context.Context, body CreateEvaluationJobJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateEvaluationJobResponse, error) {
-	rsp, err := c.CreateEvaluationJob(ctx, body, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) PostV1EvaluationWithResponse(ctx context.Context, body PostV1EvaluationJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1EvaluationResponse, error) {
+	rsp, err := c.PostV1Evaluation(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateEvaluationJobResponse(rsp)
+	return ParsePostV1EvaluationResponse(rsp)
 }
 
-// GetModelListWithResponse Get model list
+// GetV1EvaluationModelListWithResponse performs a GET /v1/evaluation/model-list (the `GetV1EvaluationModelList` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /v1/evaluation/model-list (the `GetModelList` operationId).
-func (c *ClientWithResponses) GetModelListWithResponse(ctx context.Context, params *GetModelListParams, reqEditors ...RequestEditorFn) (*GetModelListResponse, error) {
-	rsp, err := c.GetModelList(ctx, params, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) GetV1EvaluationModelListWithResponse(ctx context.Context, params *GetV1EvaluationModelListParams, reqEditors ...RequestEditorFn) (*GetV1EvaluationModelListResponse, error) {
+	rsp, err := c.GetV1EvaluationModelList(ctx, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetModelListResponse(rsp)
+	return ParseGetV1EvaluationModelListResponse(rsp)
 }
 
-// GetEvaluationJobDetailsWithResponse Get evaluation job details
+// GetV1EvaluationIdWithResponse performs a GET /v1/evaluation/{id} (the `GetV1EvaluationId` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /v1/evaluation/{id} (the `GetEvaluationJobDetails` operationId).
-func (c *ClientWithResponses) GetEvaluationJobDetailsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetEvaluationJobDetailsResponse, error) {
-	rsp, err := c.GetEvaluationJobDetails(ctx, id, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) GetV1EvaluationIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetV1EvaluationIdResponse, error) {
+	rsp, err := c.GetV1EvaluationId(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetEvaluationJobDetailsResponse(rsp)
+	return ParseGetV1EvaluationIdResponse(rsp)
 }
 
-// GetEvaluationJobStatusAndResultsWithResponse Get evaluation job status and results
+// GetV1EvaluationIdStatusWithResponse performs a GET /v1/evaluation/{id}/status (the `GetV1EvaluationIdStatus` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
 //
-// Corresponds with GET /v1/evaluation/{id}/status (the `GetEvaluationJobStatusAndResults` operationId).
-func (c *ClientWithResponses) GetEvaluationJobStatusAndResultsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetEvaluationJobStatusAndResultsResponse, error) {
-	rsp, err := c.GetEvaluationJobStatusAndResults(ctx, id, reqEditors...)
+// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+func (c *ClientWithResponses) GetV1EvaluationIdStatusWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetV1EvaluationIdStatusResponse, error) {
+	rsp, err := c.GetV1EvaluationIdStatus(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetEvaluationJobStatusAndResultsResponse(rsp)
+	return ParseGetV1EvaluationIdStatusResponse(rsp)
 }
 
 // GetV1FilesWithResponse List all files
@@ -56062,15 +56015,15 @@ func ParseEmbeddingsResponse2(rsp *http.Response) (*EmbeddingsResponse2, error) 
 	return response, nil
 }
 
-// ParseGetAllEvaluationJobsResponse parses an HTTP response from a GetAllEvaluationJobsWithResponse call
-func ParseGetAllEvaluationJobsResponse(rsp *http.Response) (*GetAllEvaluationJobsResponse, error) {
+// ParseGetV1EvaluationResponse parses an HTTP response from a GetV1EvaluationWithResponse call
+func ParseGetV1EvaluationResponse(rsp *http.Response) (*GetV1EvaluationResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetAllEvaluationJobsResponse{
+	response := &GetV1EvaluationResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -56083,34 +56036,27 @@ func ParseGetAllEvaluationJobsResponse(rsp *http.Response) (*GetAllEvaluationJob
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
 		var dest ErrorData
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ErrorData
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
+		response.JSON410 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseCreateEvaluationJobResponse parses an HTTP response from a CreateEvaluationJobWithResponse call
-func ParseCreateEvaluationJobResponse(rsp *http.Response) (*CreateEvaluationJobResponse, error) {
+// ParsePostV1EvaluationResponse parses an HTTP response from a PostV1EvaluationWithResponse call
+func ParsePostV1EvaluationResponse(rsp *http.Response) (*PostV1EvaluationResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateEvaluationJobResponse{
+	response := &PostV1EvaluationResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -56123,34 +56069,27 @@ func ParseCreateEvaluationJobResponse(rsp *http.Response) (*CreateEvaluationJobR
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
 		var dest ErrorData
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ErrorData
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
+		response.JSON410 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseGetModelListResponse parses an HTTP response from a GetModelListWithResponse call
-func ParseGetModelListResponse(rsp *http.Response) (*GetModelListResponse, error) {
+// ParseGetV1EvaluationModelListResponse parses an HTTP response from a GetV1EvaluationModelListWithResponse call
+func ParseGetV1EvaluationModelListResponse(rsp *http.Response) (*GetV1EvaluationModelListResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetModelListResponse{
+	response := &GetV1EvaluationModelListResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -56165,34 +56104,27 @@ func ParseGetModelListResponse(rsp *http.Response) (*GetModelListResponse, error
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
 		var dest ErrorData
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ErrorData
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
+		response.JSON410 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseGetEvaluationJobDetailsResponse parses an HTTP response from a GetEvaluationJobDetailsWithResponse call
-func ParseGetEvaluationJobDetailsResponse(rsp *http.Response) (*GetEvaluationJobDetailsResponse, error) {
+// ParseGetV1EvaluationIdResponse parses an HTTP response from a GetV1EvaluationIdWithResponse call
+func ParseGetV1EvaluationIdResponse(rsp *http.Response) (*GetV1EvaluationIdResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetEvaluationJobDetailsResponse{
+	response := &GetV1EvaluationIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -56205,34 +56137,27 @@ func ParseGetEvaluationJobDetailsResponse(rsp *http.Response) (*GetEvaluationJob
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
 		var dest ErrorData
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ErrorData
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
+		response.JSON410 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseGetEvaluationJobStatusAndResultsResponse parses an HTTP response from a GetEvaluationJobStatusAndResultsWithResponse call
-func ParseGetEvaluationJobStatusAndResultsResponse(rsp *http.Response) (*GetEvaluationJobStatusAndResultsResponse, error) {
+// ParseGetV1EvaluationIdStatusResponse parses an HTTP response from a GetV1EvaluationIdStatusWithResponse call
+func ParseGetV1EvaluationIdStatusResponse(rsp *http.Response) (*GetV1EvaluationIdStatusResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetEvaluationJobStatusAndResultsResponse{
+	response := &GetV1EvaluationIdStatusResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -56240,30 +56165,20 @@ func ParseGetEvaluationJobStatusAndResultsResponse(rsp *http.Response) (*GetEval
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			// Results The results of the evaluation job
-			Results *GetEvaluationJobStatusAndResults200JSONResponseBody_Results `json:"results,omitempty"`
-
-			// Status The status of the evaluation job
-			Status *GetEvaluationJobStatusAndResults200JSONResponseBodyStatus `json:"status,omitempty"`
+			Results *GetV1EvaluationIdStatus200JSONResponseBody_Results `json:"results,omitempty"`
+			Status  *GetV1EvaluationIdStatus200JSONResponseBodyStatus   `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
 		var dest ErrorData
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ErrorData
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
+		response.JSON410 = &dest
 
 	}
 
